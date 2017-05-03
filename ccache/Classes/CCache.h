@@ -41,7 +41,7 @@ NS_ASSUME_NONNULL_BEGIN
 - ( void )cleanup:         ( nullable void ( ^ )( BOOL success ) )completion;
 - ( void )clear:           ( nullable void ( ^ )( BOOL success ) )completion;
 - ( void )clearStatistics: ( nullable void ( ^ )( BOOL success ) )completion;
-- ( void )statistics:      ( nullable void ( ^ )( BOOL success, NSString * statistics ) )completion;
+- ( void )getStatistics:   ( nullable void ( ^ )( BOOL success, NSString * statistics ) )completion;
 
 @end
 

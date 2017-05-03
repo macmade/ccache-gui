@@ -148,7 +148,7 @@ NS_ASSUME_NONNULL_END
     ];
 }
 
-- ( void )statistics: ( nullable void ( ^ )( BOOL success, NSString * statistics ) )completion
+- ( void )getStatistics: ( nullable void ( ^ )( BOOL success, NSString * statistics ) )completion
 {
     [ self execute: @[ @"-s" ] completion: ^( int status, NSFileHandle * _Nullable output, NSFileHandle * _Nullable error )
         {

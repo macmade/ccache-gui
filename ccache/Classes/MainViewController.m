@@ -34,13 +34,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MainViewController()
 
-@property( atomic, readwrite, assign ) BOOL running;
+@property( atomic, readwrite, assign           ) BOOL      running;
+@property( atomic, readwrite, strong, nullable ) NSTimer * timer;
 
 - ( IBAction )cleanup:         ( nullable id )sender;
 - ( IBAction )clear:           ( nullable id )sender;
 - ( IBAction )resetStatistics: ( nullable id )sender;
 
-- ( void )readStatistics;
+- ( void )updateStatistics;
 
 @end
 
@@ -50,7 +51,23 @@ NS_ASSUME_NONNULL_END
 
 - ( void )awakeFromNib
 {
-    [ self readStatistics ];
+    [ self updateStatistics ];
+}
+
+- ( void )viewDidAppear
+{
+    [ super viewDidAppear ];
+    
+    self.timer = [ NSTimer scheduledTimerWithTimeInterval: 1 target: self selector: @selector( updateStatistics ) userInfo: nil repeats: YES ];
+}
+
+- ( void )viewDidDisappear
+{
+    [ super viewDidDisappear ];
+    
+    [ self.timer invalidate ];
+    
+    self.timer = nil;
 }
 
 - ( IBAction )cleanup: ( nullable id )sender
@@ -63,7 +80,9 @@ NS_ASSUME_NONNULL_END
         {
             ( void )success;
             
-            [ self readStatistics ];
+            [ self updateStatistics ];
+            
+            self.running = NO;
         }
     ];
 }
@@ -78,7 +97,9 @@ NS_ASSUME_NONNULL_END
         {
             ( void )success;
             
-            [ self readStatistics ];
+            [ self updateStatistics ];
+            
+            self.running = NO;
         }
     ];
 }
@@ -93,27 +114,23 @@ NS_ASSUME_NONNULL_END
         {
             ( void )success;
             
-            [ self readStatistics ];
+            [ self updateStatistics ];
+            
+            self.running = NO;
         }
     ];
 }
 
-- ( void )readStatistics
+- ( void )updateStatistics
 {
-    self.running = YES;
-    
-    [ [ CCache sharedInstance ] statistics: ^( BOOL success, NSString * statistics )
+    [ [ CCache sharedInstance ] getStatistics: ^( BOOL success, NSString * statistics )
         {
             if( success == NO )
             {
-                self.running = NO;
-                
                 return;
             }
             
             NSLog( @"%@", statistics );
-            
-            self.running = NO;
         }
     ];
 }
