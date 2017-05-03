@@ -58,7 +58,10 @@ NS_ASSUME_NONNULL_END
 {
     [ super viewDidAppear ];
     
-    self.timer = [ NSTimer scheduledTimerWithTimeInterval: 1 target: self selector: @selector( updateStatistics ) userInfo: nil repeats: YES ];
+    if( self.timer == nil )
+    {
+        self.timer = [ NSTimer scheduledTimerWithTimeInterval: 1 target: self selector: @selector( updateStatistics ) userInfo: nil repeats: YES ];
+    }
 }
 
 - ( void )viewDidDisappear
