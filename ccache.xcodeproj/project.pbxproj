@@ -10,6 +10,8 @@
 		050B84D11EB93FF90090EA12 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 050B84D01EB93FF90090EA12 /* main.m */; };
 		050B84E41EB9C8120090EA12 /* ApplicationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 050B84E31EB9C8120090EA12 /* ApplicationDelegate.m */; };
 		050B84FA1EB9C90C0090EA12 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 050B84F81EB9C90C0090EA12 /* MainMenu.xib */; };
+		050B85121EB9CEAD0090EA12 /* StatusIconTemplate.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 050B85111EB9CEAD0090EA12 /* StatusIconTemplate.pdf */; };
+		051DC4111EBA5F1400C00618 /* CCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 051DC4101EBA5F1400C00618 /* CCache.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,9 @@
 		050B84E21EB9C8120090EA12 /* ApplicationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplicationDelegate.h; sourceTree = "<group>"; };
 		050B84E31EB9C8120090EA12 /* ApplicationDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplicationDelegate.m; sourceTree = "<group>"; };
 		050B84F91EB9C90C0090EA12 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		050B85111EB9CEAD0090EA12 /* StatusIconTemplate.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = StatusIconTemplate.pdf; sourceTree = "<group>"; };
+		051DC40F1EBA5F1400C00618 /* CCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCache.h; sourceTree = "<group>"; };
+		051DC4101EBA5F1400C00618 /* CCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCache.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +75,7 @@
 		050B84E01EB9C8070090EA12 /* Interface */ = {
 			isa = PBXGroup;
 			children = (
+				050B84FB1EB9CCD60090EA12 /* Images */,
 				050B84F81EB9C90C0090EA12 /* MainMenu.xib */,
 			);
 			path = Interface;
@@ -80,8 +86,18 @@
 			children = (
 				050B84E21EB9C8120090EA12 /* ApplicationDelegate.h */,
 				050B84E31EB9C8120090EA12 /* ApplicationDelegate.m */,
+				051DC40F1EBA5F1400C00618 /* CCache.h */,
+				051DC4101EBA5F1400C00618 /* CCache.m */,
 			);
 			path = Classes;
+			sourceTree = "<group>";
+		};
+		050B84FB1EB9CCD60090EA12 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				050B85111EB9CEAD0090EA12 /* StatusIconTemplate.pdf */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -143,6 +159,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				050B85121EB9CEAD0090EA12 /* StatusIconTemplate.pdf in Resources */,
 				050B84FA1EB9C90C0090EA12 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -156,6 +173,7 @@
 			files = (
 				050B84D11EB93FF90090EA12 /* main.m in Sources */,
 				050B84E41EB9C8120090EA12 /* ApplicationDelegate.m in Sources */,
+				051DC4111EBA5F1400C00618 /* CCache.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -224,7 +242,7 @@
 				CLANG_WARN_OBJC_EXPLICIT_OWNERSHIP_TYPE = YES;
 				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS = YES;
+				CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS = NO;
 				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
@@ -340,7 +358,7 @@
 				CLANG_WARN_OBJC_EXPLICIT_OWNERSHIP_TYPE = YES;
 				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS = YES;
+				CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS = NO;
 				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
@@ -401,7 +419,7 @@
 		050B84DE1EB93FF90090EA12 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "";
 				DEVELOPMENT_TEAM = 326Y53CJMD;
 				INFOPLIST_FILE = ccache/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";

@@ -1,7 +1,7 @@
 /*******************************************************************************
  * The MIT License (MIT)
  * 
- * Copyright (c) 2017 Jean-David Gadina - www-xs-labs.com
+ * Copyright (c) 2017 Jean-David Gadina - www.xs-labs.com
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,37 +23,26 @@
  ******************************************************************************/
 
 /*!
- * @file        ApplicationDelegate.m
+ * @header      CCache.h
  * @copyright   (c) 2017, Jean-David Gadina - www.xs-labs.com
  */
 
-#import "ApplicationDelegate.h"
+@import Foundation;
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ApplicationDelegate()
+@interface CCache: NSObject
 
-@property( atomic, readwrite, strong ) NSStatusItem * statusItem;
+@property( atomic, readonly           ) BOOL       installed;
+@property( atomic, readonly, nullable ) NSString * path;
+
++ ( instancetype )sharedInstance;
+
+- ( void )cleanup:         ( nullable void ( ^ )( BOOL success ) )completion;
+- ( void )clear:           ( nullable void ( ^ )( BOOL success ) )completion;
+- ( void )clearStatistics: ( nullable void ( ^ )( BOOL success ) )completion;
+- ( void )statistics:      ( nullable void ( ^ )( BOOL success, NSString * statistics ) )completion;
 
 @end
 
 NS_ASSUME_NONNULL_END
-
-@implementation ApplicationDelegate
-
-- ( void )applicationDidFinishLaunching: ( NSNotification * )notification
-{
-    ( void )notification;
-    
-    self.statusItem       = [ [ NSStatusBar systemStatusBar ] statusItemWithLength: NSSquareStatusItemLength ];
-    self.statusItem.image = [ NSImage imageNamed: @"StatusIconTemplate" ];
-}
-
-
-- ( void )applicationWillTerminate: ( NSNotification * )notification
-{
-    ( void )notification;
-}
-
-
-@end
