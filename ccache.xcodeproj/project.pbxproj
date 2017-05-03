@@ -12,6 +12,9 @@
 		050B84FA1EB9C90C0090EA12 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 050B84F81EB9C90C0090EA12 /* MainMenu.xib */; };
 		050B85121EB9CEAD0090EA12 /* StatusIconTemplate.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 050B85111EB9CEAD0090EA12 /* StatusIconTemplate.pdf */; };
 		051DC4111EBA5F1400C00618 /* CCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 051DC4101EBA5F1400C00618 /* CCache.m */; };
+		05765A271EBA706C00D2DDDE /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05765A261EBA706C00D2DDDE /* MainViewController.m */; };
+		05765A2A1EBA708600D2DDDE /* AboutWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05765A291EBA708600D2DDDE /* AboutWindowController.m */; };
+		05765A9F1EBA83C500D2DDDE /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05765A9D1EBA83C500D2DDDE /* MainViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,11 @@
 		050B85111EB9CEAD0090EA12 /* StatusIconTemplate.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = StatusIconTemplate.pdf; sourceTree = "<group>"; };
 		051DC40F1EBA5F1400C00618 /* CCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCache.h; sourceTree = "<group>"; };
 		051DC4101EBA5F1400C00618 /* CCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCache.m; sourceTree = "<group>"; };
+		05765A251EBA706C00D2DDDE /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		05765A261EBA706C00D2DDDE /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		05765A281EBA708600D2DDDE /* AboutWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutWindowController.h; sourceTree = "<group>"; };
+		05765A291EBA708600D2DDDE /* AboutWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutWindowController.m; sourceTree = "<group>"; };
+		05765A9E1EBA83C500D2DDDE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +85,7 @@
 			children = (
 				050B84FB1EB9CCD60090EA12 /* Images */,
 				050B84F81EB9C90C0090EA12 /* MainMenu.xib */,
+				05765A9D1EBA83C500D2DDDE /* MainViewController.xib */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -84,10 +93,14 @@
 		050B84E11EB9C8120090EA12 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				05765A281EBA708600D2DDDE /* AboutWindowController.h */,
+				05765A291EBA708600D2DDDE /* AboutWindowController.m */,
 				050B84E21EB9C8120090EA12 /* ApplicationDelegate.h */,
 				050B84E31EB9C8120090EA12 /* ApplicationDelegate.m */,
 				051DC40F1EBA5F1400C00618 /* CCache.h */,
 				051DC4101EBA5F1400C00618 /* CCache.m */,
+				05765A251EBA706C00D2DDDE /* MainViewController.h */,
+				05765A261EBA706C00D2DDDE /* MainViewController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -160,6 +173,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				050B85121EB9CEAD0090EA12 /* StatusIconTemplate.pdf in Resources */,
+				05765A9F1EBA83C500D2DDDE /* MainViewController.xib in Resources */,
 				050B84FA1EB9C90C0090EA12 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -172,8 +186,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				050B84D11EB93FF90090EA12 /* main.m in Sources */,
+				05765A2A1EBA708600D2DDDE /* AboutWindowController.m in Sources */,
 				050B84E41EB9C8120090EA12 /* ApplicationDelegate.m in Sources */,
 				051DC4111EBA5F1400C00618 /* CCache.m in Sources */,
+				05765A271EBA706C00D2DDDE /* MainViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -186,6 +202,14 @@
 				050B84F91EB9C90C0090EA12 /* Base */,
 			);
 			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		05765A9D1EBA83C500D2DDDE /* MainViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				05765A9E1EBA83C500D2DDDE /* Base */,
+			);
+			name = MainViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

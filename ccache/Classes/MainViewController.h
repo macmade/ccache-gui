@@ -1,7 +1,7 @@
 /*******************************************************************************
  * The MIT License (MIT)
  * 
- * Copyright (c) 2017 Jean-David Gadina - www-xs-labs.com
+ * Copyright (c) 2017 Jean-David Gadina - www.xs-labs.com
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@
  ******************************************************************************/
 
 /*!
- * @header      ApplicationDelegate.h
+ * @header      MainViewController.h
  * @copyright   (c) 2017, Jean-David Gadina - www.xs-labs.com
  */
 
@@ -31,10 +31,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ApplicationDelegate: NSObject < NSApplicationDelegate >
-
-- ( IBAction )openPopover: ( nullable id )sender;
-- ( IBAction )closePopover: ( nullable id )sender;
+@interface MainViewController: NSViewController
 
 @end
 

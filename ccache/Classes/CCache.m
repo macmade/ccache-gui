@@ -201,7 +201,14 @@ NS_ASSUME_NONNULL_END
             [ task launch ];
             [ task waitUntilExit ];
             
-            completion( task.terminationStatus, p1.fileHandleForReading, p2.fileHandleForReading );
+            dispatch_async
+            (
+                dispatch_get_main_queue(),
+                ^( void )
+                {
+                    completion( task.terminationStatus, p1.fileHandleForReading, p2.fileHandleForReading );
+                }
+            );
         }
     );
 }
