@@ -1,0 +1,6 @@
+language: objective-c
+xcode_project: ccache.xcodeproj
+xcode_scheme: ccache
+osx_image: xcode8.1
+script:
+    - xcodebuild build -project ccache.xcodeproj -scheme ccache
