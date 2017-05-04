@@ -29,13 +29,17 @@
 
 #import "MainViewController.h"
 #import "CCache.h"
+#import "StatisticItem.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MainViewController()
+@interface MainViewController() < NSTableViewDelegate, NSTableViewDataSource >
 
-@property( atomic, readwrite, assign           ) BOOL      running;
-@property( atomic, readwrite, strong, nullable ) NSTimer * timer;
+@property( atomic, readwrite, assign           )          BOOL                         awake;
+@property( atomic, readwrite, assign           )          BOOL                         running;
+@property( atomic, readwrite, strong, nullable )          NSTimer                    * timer;
+@property( atomic, readwrite, strong, nullable )          NSArray< StatisticItem * > * statistics;
+@property( atomic, readwrite, strong, nullable ) IBOutlet NSArrayController          * statisticsController;
 
 - ( IBAction )cleanup:         ( nullable id )sender;
 - ( IBAction )clear:           ( nullable id )sender;
@@ -49,9 +53,28 @@ NS_ASSUME_NONNULL_END
 
 @implementation MainViewController
 
+- ( instancetype )initWithNibName: ( NSString * )name bundle: ( NSBundle * )bundle
+{
+    if( ( self = [ super initWithNibName: name bundle: bundle ] ) )
+    {
+        self.statistics = @[];
+    }
+    
+    return self;
+}
+
 - ( void )awakeFromNib
 {
+    if( self.awake )
+    {
+        return;
+    }
+    
+    self.awake = YES;
+    
     [ self updateStatistics ];
+    
+    self.statisticsController.sortDescriptors = @[ [ NSSortDescriptor sortDescriptorWithKey: NSStringFromSelector( @selector( label ) ) ascending: YES selector: @selector( localizedCaseInsensitiveCompare: ) ] ];
 }
 
 - ( void )viewDidAppear
@@ -128,12 +151,45 @@ NS_ASSUME_NONNULL_END
 {
     [ [ CCache sharedInstance ] getStatistics: ^( BOOL success, NSString * statistics )
         {
-            if( success == NO )
+            NSArray                           * lines;
+            NSString                          * line;
+            NSArray                           * parts;
+            StatisticItem                     * item;
+            NSMutableArray< StatisticItem * > * items;
+            
+            if( success == NO || statistics.length == 0 )
             {
                 return;
             }
             
-            NSLog( @"%@", statistics );
+            lines = [ statistics componentsSeparatedByString: @"\n" ];
+            items = [ NSMutableArray new ];
+            
+            for( line in lines )
+            {
+                parts = [ line componentsSeparatedByString: @"  " ];
+                
+                if( parts.count < 2 )
+                {
+                    continue;
+                }
+                
+                item       = [ StatisticItem new ];
+                item.label = [ parts.firstObject stringByTrimmingCharactersInSet: [ NSCharacterSet whitespaceCharacterSet ] ].capitalizedString;
+                item.text  = [ parts.lastObject  stringByTrimmingCharactersInSet: [ NSCharacterSet whitespaceCharacterSet ] ];
+                
+                if( item.label.length && item.text.length )
+                {
+                    [ items addObject: item ];
+                }
+            }
+            
+            if( items.count )
+            {
+                [ self.statisticsController removeObjects: self.statistics ];
+                [ self.statisticsController addObjects:    items ];
+                [ self.statisticsController didChangeArrangementCriteria ];
+            }
         }
     ];
 }

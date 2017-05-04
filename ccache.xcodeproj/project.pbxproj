@@ -15,6 +15,7 @@
 		05765A271EBA706C00D2DDDE /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05765A261EBA706C00D2DDDE /* MainViewController.m */; };
 		05765A2A1EBA708600D2DDDE /* AboutWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05765A291EBA708600D2DDDE /* AboutWindowController.m */; };
 		05765A9F1EBA83C500D2DDDE /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05765A9D1EBA83C500D2DDDE /* MainViewController.xib */; };
+		05765AB51EBB20B000D2DDDE /* StatisticItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 05765AB41EBB20B000D2DDDE /* StatisticItem.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,8 @@
 		05765A281EBA708600D2DDDE /* AboutWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutWindowController.h; sourceTree = "<group>"; };
 		05765A291EBA708600D2DDDE /* AboutWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutWindowController.m; sourceTree = "<group>"; };
 		05765A9E1EBA83C500D2DDDE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainViewController.xib; sourceTree = "<group>"; };
+		05765AB31EBB20B000D2DDDE /* StatisticItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatisticItem.h; sourceTree = "<group>"; };
+		05765AB41EBB20B000D2DDDE /* StatisticItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatisticItem.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +104,8 @@
 				051DC4101EBA5F1400C00618 /* CCache.m */,
 				05765A251EBA706C00D2DDDE /* MainViewController.h */,
 				05765A261EBA706C00D2DDDE /* MainViewController.m */,
+				05765AB31EBB20B000D2DDDE /* StatisticItem.h */,
+				05765AB41EBB20B000D2DDDE /* StatisticItem.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -188,6 +193,7 @@
 				050B84D11EB93FF90090EA12 /* main.m in Sources */,
 				05765A2A1EBA708600D2DDDE /* AboutWindowController.m in Sources */,
 				050B84E41EB9C8120090EA12 /* ApplicationDelegate.m in Sources */,
+				05765AB51EBB20B000D2DDDE /* StatisticItem.m in Sources */,
 				051DC4111EBA5F1400C00618 /* CCache.m in Sources */,
 				05765A271EBA706C00D2DDDE /* MainViewController.m in Sources */,
 			);
