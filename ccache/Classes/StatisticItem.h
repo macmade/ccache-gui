@@ -35,6 +35,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property( atomic, readwrite, strong ) NSString * label;
 @property( atomic, readwrite, strong ) NSString * text;
+@property( atomic, readwrite, strong ) NSString * tooltip;
+
+- ( BOOL )isEqualToStatisticItem: ( StatisticItem * )item;
 
 @end
 

@@ -39,4 +39,63 @@ NS_ASSUME_NONNULL_END
 
 @implementation StatisticItem
 
+- ( BOOL )isEqualToStatisticItem: ( StatisticItem * )item
+{
+    if( [ item isKindOfClass: [ StatisticItem class ] ] == NO )
+    {
+        return NO;
+    }
+    
+    if( [ self.label isEqualToString: item.label ] == NO )
+    {
+        return NO;
+    }
+    
+    if( [ self.text isEqualToString: item.text ] == NO )
+    {
+        return NO;
+    }
+    
+    if( [ self.tooltip isEqualToString: item.tooltip ] == NO && ( self.tooltip != nil && item.tooltip != nil ) )
+    {
+        return NO;
+    }
+    
+    return YES;
+}
+
+- ( BOOL )isEqual: ( id )object
+{
+    if( object == self )
+    {
+        return YES;
+    }
+    
+    if( [ object isKindOfClass: [ StatisticItem class ] ] == NO )
+    {
+        return NO;
+    }
+    
+    return [ self isEqualToStatisticItem: object ];
+}
+
+- ( BOOL )isEqualTo: ( id )object
+{
+    return [ self isEqual: object ];
+}
+
+- ( NSUInteger )hash
+{
+    return [ [ self.label stringByAppendingString: self.text ] stringByAppendingPathExtension: self.tooltip ].hash;
+}
+
+- ( NSString * )description
+{
+    NSString * description;
+    
+    description = [ super description ];
+    
+    return [ description stringByAppendingFormat: @" %@: %@", self.label, self.text ];
+}
+
 @end

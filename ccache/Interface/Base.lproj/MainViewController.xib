@@ -109,7 +109,7 @@
                                                         </textFieldCell>
                                                         <connections>
                                                             <binding destination="Jc9-zY-hdK" name="value" keyPath="objectValue.label" id="ahT-Mf-S2Q"/>
-                                                            <binding destination="Jc9-zY-hdK" name="toolTip" keyPath="objectValue.label" id="eyT-Ku-rhY"/>
+                                                            <binding destination="Jc9-zY-hdK" name="toolTip" keyPath="objectValue.tooltip" id="HSu-5g-XvE"/>
                                                         </connections>
                                                     </textField>
                                                 </subviews>
