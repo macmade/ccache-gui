@@ -24,7 +24,7 @@
 
 /*!
  * @file        ApplicationDelegate.m
- * @copyright   (c) 2017, Jean-David Gadina - www.xs-labs.com
+ * @copyright   (c) 2017, Jean-David Gadina - www.xs-labs.com / www.imazing.com
  */
 
 #import "ApplicationDelegate.h"
