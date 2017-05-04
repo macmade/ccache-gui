@@ -12,7 +12,16 @@ ccache-gui
 
 ### About
 
-macOS GUI helper for cache.
+GUI helper application for the **[ccache](https://ccache.samba.org)** tool.
+
+**ccache** can be installed on macOS with **[Homebrew](https://brew.sh)**:
+
+    brew install ccache
+
+The application run by default in the menu bar, but the window can be detached for convenience.
+
+![Menu Item](Assets/menu.png "Menu Item")
+![Detachable Window](Assets/window.png "Detachable Window")
 
 License
 -------
