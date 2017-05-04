@@ -50,7 +50,8 @@
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
-                        <action selector="showAboutWindow:" target="-1" id="8NN-b8-kHc"/>
+                        <action selector="showOptionsMenu:" target="-2" id="wdU-LT-eA6"/>
+                        <outlet property="menu" destination="4J0-Q9-6Jn" id="nFl-DF-pSs"/>
                     </connections>
                 </button>
                 <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="ah2-k5-AKT">
@@ -81,7 +82,7 @@
                                 <tableViewGridLines key="gridStyleMask" horizontal="YES"/>
                                 <color key="gridColor" white="0.80000000000000004" alpha="0.20000000000000001" colorSpace="deviceWhite"/>
                                 <tableColumns>
-                                    <tableColumn width="151" minWidth="40" maxWidth="1000" id="GE5-CT-tVY">
+                                    <tableColumn width="154" minWidth="40" maxWidth="1000" id="GE5-CT-tVY">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -96,19 +97,19 @@
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="Jc9-zY-hdK">
-                                                <rect key="frame" x="0.0" y="2" width="151" height="17"/>
+                                                <rect key="frame" x="0.0" y="2" width="154" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nds-jL-6rj">
-                                                        <rect key="frame" x="-2" y="2" width="155" height="14"/>
+                                                        <rect key="frame" x="-2" y="2" width="158" height="14"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" sendsActionOnEndEditing="YES" title="Table View Cell" id="JWu-fj-CB2">
                                                             <font key="font" metaFont="systemThin" size="11"/>
                                                             <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                         <connections>
-                                                            <binding destination="Jc9-zY-hdK" name="toolTip" keyPath="objectValue.label" id="eyT-Ku-rhY"/>
                                                             <binding destination="Jc9-zY-hdK" name="value" keyPath="objectValue.label" id="ahT-Mf-S2Q"/>
+                                                            <binding destination="Jc9-zY-hdK" name="toolTip" keyPath="objectValue.label" id="eyT-Ku-rhY"/>
                                                         </connections>
                                                     </textField>
                                                 </subviews>
@@ -123,7 +124,7 @@
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn width="153" minWidth="40" maxWidth="1000" id="Y0A-Fr-vEg">
+                                    <tableColumn width="156" minWidth="40" maxWidth="1000" id="Y0A-Fr-vEg">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -138,11 +139,11 @@
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="PQt-3a-ngV">
-                                                <rect key="frame" x="151" y="2" width="153" height="17"/>
+                                                <rect key="frame" x="154" y="2" width="156" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zs4-x1-aEw">
-                                                        <rect key="frame" x="-2" y="2" width="157" height="14"/>
+                                                        <rect key="frame" x="-2" y="2" width="160" height="14"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingMiddle" selectable="YES" sendsActionOnEndEditing="YES" alignment="right" title="Table View Cell" id="Hgg-ZE-NcT">
                                                             <font key="font" metaFont="systemThin" size="11"/>
                                                             <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
@@ -286,6 +287,48 @@
                 <binding destination="-2" name="contentArray" keyPath="statistics" id="T7f-Yt-Vml"/>
             </connections>
         </arrayController>
+        <menu id="4J0-Q9-6Jn">
+            <items>
+                <menuItem title="About ccache..." id="MNN-zH-dQp">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="showAboutWindow:" target="-1" id="wXY-Nc-9pS"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="VUw-Ms-bDI"/>
+                <menuItem title="Start ccache at Login" id="Q1c-cG-DuT">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="clearXcodeDerivedData:" target="-2" id="qgm-sC-XsO"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Open ccache Manual..." id="h4s-3k-wsZ">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="openManual:" target="-2" id="PgU-uS-cvr"/>
+                        <binding destination="-2" name="enabled" keyPath="running" id="bhJ-b3-93v">
+                            <dictionary key="options">
+                                <string key="NSValueTransformerName">NSNegateBoolean</string>
+                            </dictionary>
+                        </binding>
+                    </connections>
+                </menuItem>
+                <menuItem title="Clear Xcode Derived Data" id="WBh-kl-HTF">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="clearXcodeDerivedData:" target="-2" id="KML-AR-dZK"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="GN6-Xq-yGJ"/>
+                <menuItem title="Quit ccache" id="dWF-iw-Yr2">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="terminate:" target="-1" id="1R5-xb-sxL"/>
+                    </connections>
+                </menuItem>
+            </items>
+            <point key="canvasLocation" x="-63" y="-312"/>
+        </menu>
     </objects>
     <resources>
         <image name="NSActionTemplate" width="14" height="14"/>

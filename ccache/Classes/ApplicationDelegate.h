@@ -33,6 +33,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ApplicationDelegate: NSObject < NSApplicationDelegate >
 
+@property( atomic, readwrite, assign ) BOOL startAtLogin;
+
 - ( IBAction )showAboutWindow: ( nullable id )sender;
 - ( IBAction )openPopover:     ( nullable id )sender;
 - ( IBAction )closePopover:    ( nullable id )sender;

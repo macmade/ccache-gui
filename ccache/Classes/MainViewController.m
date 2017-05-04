@@ -41,9 +41,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property( atomic, readwrite, strong, nullable )          NSArray< StatisticItem * > * statistics;
 @property( atomic, readwrite, strong, nullable ) IBOutlet NSArrayController          * statisticsController;
 
-- ( IBAction )cleanup:         ( nullable id )sender;
-- ( IBAction )clear:           ( nullable id )sender;
-- ( IBAction )resetStatistics: ( nullable id )sender;
+- ( IBAction )showOptionsMenu:       ( id )sender;
+- ( IBAction )cleanup:               ( nullable id )sender;
+- ( IBAction )clear:                 ( nullable id )sender;
+- ( IBAction )resetStatistics:       ( nullable id )sender;
+- ( IBAction )openManual:            ( nullable id )sender;
+- ( IBAction )clearXcodeDerivedData: ( nullable id )sender;
 
 - ( void )updateStatistics;
 
@@ -94,6 +97,25 @@ NS_ASSUME_NONNULL_END
     [ self.timer invalidate ];
     
     self.timer = nil;
+}
+
+- ( IBAction )showOptionsMenu: ( id )sender
+{
+    NSButton * button;
+    
+    if( [ sender isKindOfClass: [ NSButton class ] ] == NO )
+    {
+        return;
+    }
+    
+    button = sender;
+    
+    if( button.menu == nil || NSApp.currentEvent == nil )
+    {
+        return;
+    }
+    
+    [ NSMenu popUpContextMenu: ( id )( button.menu ) withEvent: ( id )( NSApp.currentEvent ) forView: button ];
 }
 
 - ( IBAction )cleanup: ( nullable id )sender
@@ -192,6 +214,74 @@ NS_ASSUME_NONNULL_END
             }
         }
     ];
+}
+
+- ( IBAction )openManual: ( nullable id )sender
+{
+    ( void )sender;
+    
+    [ [ NSWorkspace sharedWorkspace ] openURL: [ NSURL URLWithString: @"https://ccache.samba.org/manual.html" ] ];
+}
+
+- ( IBAction )clearXcodeDerivedData: ( nullable id )sender
+{
+    ( void )sender;
+    
+    self.running = YES;
+    
+    dispatch_async
+    (
+        dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_HIGH, 0 ),
+        ^( void )
+        {
+            NSString * library;
+            NSString * path;
+            NSString * sub;
+            NSError  * error;
+            BOOL       dir;
+            
+            library = NSSearchPathForDirectoriesInDomains( NSLibraryDirectory, NSUserDomainMask, YES ).firstObject;
+            error   = nil;
+            
+            if( library.length && [ [ NSFileManager defaultManager ] fileExistsAtPath: library ] )
+            {
+                path = [ library stringByAppendingPathComponent: @"Developer" ];
+                path = [ path    stringByAppendingPathComponent: @"Xcode" ];
+                path = [ path    stringByAppendingPathComponent: @"DerivedData" ];
+                
+                if( path.length && [ [ NSFileManager defaultManager ] fileExistsAtPath: path isDirectory: &dir ] && dir )
+                {
+                    for( sub in [ [ NSFileManager defaultManager ] contentsOfDirectoryAtPath: path error: NULL ] )
+                    {
+                        [ [ NSFileManager defaultManager ] removeItemAtPath: [ path stringByAppendingPathComponent: sub ] error: &error ];
+                        
+                        if( error != nil )
+                        {
+                            break;
+                        }
+                    }
+                }
+            }
+            
+            dispatch_async
+            (
+                dispatch_get_main_queue(),
+                ^( void )
+                {
+                    NSAlert * alert;
+                    
+                    if( error != nil )
+                    {
+                        alert = [ NSAlert alertWithError: error ];
+                        
+                        [ alert runModal ];
+                    }
+                    
+                    self.running = NO;
+                }
+            );
+        }
+    );
 }
 
 @end

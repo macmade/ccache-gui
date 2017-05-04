@@ -17,6 +17,7 @@
 		05765A9F1EBA83C500D2DDDE /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05765A9D1EBA83C500D2DDDE /* MainViewController.xib */; };
 		05765AB51EBB20B000D2DDDE /* StatisticItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 05765AB41EBB20B000D2DDDE /* StatisticItem.m */; };
 		05765AB81EBB261D00D2DDDE /* AboutWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05765AB61EBB261D00D2DDDE /* AboutWindowController.xib */; };
+		05765B101EBB99D300D2DDDE /* ccache.icns in Resources */ = {isa = PBXBuildFile; fileRef = 05765B0F1EBB99D300D2DDDE /* ccache.icns */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		05765AB31EBB20B000D2DDDE /* StatisticItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatisticItem.h; sourceTree = "<group>"; };
 		05765AB41EBB20B000D2DDDE /* StatisticItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatisticItem.m; sourceTree = "<group>"; };
 		05765AB71EBB261D00D2DDDE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AboutWindowController.xib; sourceTree = "<group>"; };
+		05765B0F1EBB99D300D2DDDE /* ccache.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = ccache.icns; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 		050B84FB1EB9CCD60090EA12 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				05765B0F1EBB99D300D2DDDE /* ccache.icns */,
 				050B85111EB9CEAD0090EA12 /* StatusIconTemplate.pdf */,
 			);
 			path = Images;
@@ -182,6 +185,7 @@
 			files = (
 				050B85121EB9CEAD0090EA12 /* StatusIconTemplate.pdf in Resources */,
 				05765AB81EBB261D00D2DDDE /* AboutWindowController.xib in Resources */,
+				05765B101EBB99D300D2DDDE /* ccache.icns in Resources */,
 				05765A9F1EBA83C500D2DDDE /* MainViewController.xib in Resources */,
 				050B84FA1EB9C90C0090EA12 /* MainMenu.xib in Resources */,
 			);
@@ -269,7 +273,7 @@
 				CLANG_MODULES_AUTOLINK = YES;
 				CLANG_STATIC_ANALYZER_MODE = deep;
 				CLANG_STATIC_ANALYZER_MODE_ON_ANALYZE_ACTION = deep;
-				CLANG_WARN_ASSIGN_ENUM = YES;
+				CLANG_WARN_ASSIGN_ENUM = NO;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_CXX0X_EXTENSIONS = YES;
@@ -385,7 +389,7 @@
 				CLANG_MODULES_AUTOLINK = YES;
 				CLANG_STATIC_ANALYZER_MODE = deep;
 				CLANG_STATIC_ANALYZER_MODE_ON_ANALYZE_ACTION = deep;
-				CLANG_WARN_ASSIGN_ENUM = YES;
+				CLANG_WARN_ASSIGN_ENUM = NO;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_CXX0X_EXTENSIONS = YES;

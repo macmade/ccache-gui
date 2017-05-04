@@ -55,16 +55,40 @@ NS_ASSUME_NONNULL_END
 {
     ( void )notification;
     
+    self.startAtLogin       = NO;
     self.statusItem         = [ [ NSStatusBar systemStatusBar ] statusItemWithLength: NSSquareStatusItemLength ];
     self.statusItem.image   = [ NSImage imageNamed: @"StatusIconTemplate" ];
     self.statusItem.target  = self;
     self.statusItem.action  = @selector( togglePopover: );
     self.mainViewController = [ MainViewController new ];
+    
+    [ self addObserver: self forKeyPath: NSStringFromSelector( @selector( startAtLogin ) ) options: 0 context: NULL ];
 }
 
 - ( void )applicationWillTerminate: ( NSNotification * )notification
 {
     ( void )notification;
+    
+    [ self removeObserver: self forKeyPath: NSStringFromSelector( @selector( startAtLogin ) ) ];
+}
+
+- ( void )observeValueForKeyPath: ( NSString * )keyPath ofObject: ( id )object change: ( NSDictionary< NSKeyValueChangeKey, id > * )change context: ( void * )context
+{
+    if( object == self && [ keyPath isEqualToString: NSStringFromSelector( @selector( startAtLogin ) ) ] )
+    {
+        if( self.startAtLogin )
+        {
+            
+        }
+        else
+        {
+            
+        }
+    }
+    else
+    {
+        [ super observeValueForKeyPath: keyPath ofObject: object change: change context: context ];
+    }
 }
 
 - ( IBAction )showAboutWindow: ( nullable id )sender
@@ -205,7 +229,7 @@ NS_ASSUME_NONNULL_END
 {
     ( void )notification;
     
-    self.popoverTranscientEvent = [ NSEvent addGlobalMonitorForEventsMatchingMask: ( NSEventMask )( NSEventMaskLeftMouseUp | NSEventMaskRightMouseUp ) handler:
+    self.popoverTranscientEvent = [ NSEvent addGlobalMonitorForEventsMatchingMask: NSEventMaskLeftMouseUp | NSEventMaskRightMouseUp handler:
         ^( NSEvent * e )
         {
             ( void )e;
