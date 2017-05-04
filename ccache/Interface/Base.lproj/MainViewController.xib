@@ -25,7 +25,7 @@
                         <constraint firstAttribute="height" constant="48" id="SLn-uF-qfd"/>
                         <constraint firstAttribute="width" constant="48" id="m1g-bO-ZJR"/>
                     </constraints>
-                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="StatusIconTemplate" id="4P7-p8-WUD"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="ccache" id="4P7-p8-WUD"/>
                 </imageView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m3E-bf-ytC">
                     <rect key="frame" x="74" y="338" width="98" height="36"/>
@@ -332,6 +332,6 @@
     </objects>
     <resources>
         <image name="NSActionTemplate" width="14" height="14"/>
-        <image name="StatusIconTemplate" width="20" height="20"/>
+        <image name="ccache" width="512" height="512"/>
     </resources>
 </document>
