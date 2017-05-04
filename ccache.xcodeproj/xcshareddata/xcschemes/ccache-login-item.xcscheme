@@ -14,8 +14,8 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "05765B271EBBA62E00D2DDDE"
-               BuildableName = "ccache-login-item"
+               BlueprintIdentifier = "05765B361EBBA8CD00D2DDDE"
+               BuildableName = "ccache-login-item.app"
                BlueprintName = "ccache-login-item"
                ReferencedContainer = "container:ccache.xcodeproj">
             </BuildableReference>
@@ -32,8 +32,8 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "05765B271EBBA62E00D2DDDE"
-            BuildableName = "ccache-login-item"
+            BlueprintIdentifier = "05765B361EBBA8CD00D2DDDE"
+            BuildableName = "ccache-login-item.app"
             BlueprintName = "ccache-login-item"
             ReferencedContainer = "container:ccache.xcodeproj">
          </BuildableReference>
@@ -55,8 +55,8 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "05765B271EBBA62E00D2DDDE"
-            BuildableName = "ccache-login-item"
+            BlueprintIdentifier = "05765B361EBBA8CD00D2DDDE"
+            BuildableName = "ccache-login-item.app"
             BlueprintName = "ccache-login-item"
             ReferencedContainer = "container:ccache.xcodeproj">
          </BuildableReference>
@@ -74,8 +74,8 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "05765B271EBBA62E00D2DDDE"
-            BuildableName = "ccache-login-item"
+            BlueprintIdentifier = "05765B361EBBA8CD00D2DDDE"
+            BuildableName = "ccache-login-item.app"
             BlueprintName = "ccache-login-item"
             ReferencedContainer = "container:ccache.xcodeproj">
          </BuildableReference>
