@@ -296,10 +296,10 @@
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="VUw-Ms-bDI"/>
-                <menuItem title="Start ccache at Login" id="Q1c-cG-DuT">
+                <menuItem title="Start ccache at Login..." id="Q1c-cG-DuT">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <action selector="clearXcodeDerivedData:" target="-2" id="qgm-sC-XsO"/>
+                        <binding destination="-3" name="value" keyPath="delegate.startAtLogin" id="vgq-ur-DN6"/>
                     </connections>
                 </menuItem>
                 <menuItem title="Open ccache Manual..." id="h4s-3k-wsZ">
@@ -313,7 +313,7 @@
                         </binding>
                     </connections>
                 </menuItem>
-                <menuItem title="Clear Xcode Derived Data" id="WBh-kl-HTF">
+                <menuItem title="Clear Xcode Derived Data..." id="WBh-kl-HTF">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="clearXcodeDerivedData:" target="-2" id="KML-AR-dZK"/>

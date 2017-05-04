@@ -30,6 +30,7 @@
 #import "ApplicationDelegate.h"
 #import "MainViewController.h"
 #import "AboutWindowController.h"
+#import "NSApplication+LaunchServices.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -55,7 +56,7 @@ NS_ASSUME_NONNULL_END
 {
     ( void )notification;
     
-    self.startAtLogin       = NO;
+    self.startAtLogin       = [ NSApp isLoginItemEnabled ];
     self.statusItem         = [ [ NSStatusBar systemStatusBar ] statusItemWithLength: NSSquareStatusItemLength ];
     self.statusItem.image   = [ NSImage imageNamed: @"StatusIconTemplate" ];
     self.statusItem.target  = self;
@@ -78,11 +79,11 @@ NS_ASSUME_NONNULL_END
     {
         if( self.startAtLogin )
         {
-            
+            [ NSApp enableLoginItem ];
         }
         else
         {
-            
+            [ NSApp disableLoginItem ];
         }
     }
     else

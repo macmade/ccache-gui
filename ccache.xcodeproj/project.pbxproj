@@ -18,6 +18,7 @@
 		05765AB51EBB20B000D2DDDE /* StatisticItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 05765AB41EBB20B000D2DDDE /* StatisticItem.m */; };
 		05765AB81EBB261D00D2DDDE /* AboutWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05765AB61EBB261D00D2DDDE /* AboutWindowController.xib */; };
 		05765B101EBB99D300D2DDDE /* ccache.icns in Resources */ = {isa = PBXBuildFile; fileRef = 05765B0F1EBB99D300D2DDDE /* ccache.icns */; };
+		05765B901EBBBE5E00D2DDDE /* NSApplication+LaunchServices.m in Sources */ = {isa = PBXBuildFile; fileRef = 05765B8F1EBBBE5E00D2DDDE /* NSApplication+LaunchServices.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -51,6 +52,8 @@
 		05765AB41EBB20B000D2DDDE /* StatisticItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatisticItem.m; sourceTree = "<group>"; };
 		05765AB71EBB261D00D2DDDE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AboutWindowController.xib; sourceTree = "<group>"; };
 		05765B0F1EBB99D300D2DDDE /* ccache.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = ccache.icns; sourceTree = "<group>"; };
+		05765B8E1EBBBE5E00D2DDDE /* NSApplication+LaunchServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSApplication+LaunchServices.h"; sourceTree = "<group>"; };
+		05765B8F1EBBBE5E00D2DDDE /* NSApplication+LaunchServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSApplication+LaunchServices.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +124,8 @@
 				051DC4101EBA5F1400C00618 /* CCache.m */,
 				05765A251EBA706C00D2DDDE /* MainViewController.h */,
 				05765A261EBA706C00D2DDDE /* MainViewController.m */,
+				05765B8E1EBBBE5E00D2DDDE /* NSApplication+LaunchServices.h */,
+				05765B8F1EBBBE5E00D2DDDE /* NSApplication+LaunchServices.m */,
 				05765AB31EBB20B000D2DDDE /* StatisticItem.h */,
 				05765AB41EBB20B000D2DDDE /* StatisticItem.m */,
 			);
@@ -214,6 +219,7 @@
 				050B84D11EB93FF90090EA12 /* main.m in Sources */,
 				05765A2A1EBA708600D2DDDE /* AboutWindowController.m in Sources */,
 				050B84E41EB9C8120090EA12 /* ApplicationDelegate.m in Sources */,
+				05765B901EBBBE5E00D2DDDE /* NSApplication+LaunchServices.m in Sources */,
 				05765AB51EBB20B000D2DDDE /* StatisticItem.m in Sources */,
 				051DC4111EBA5F1400C00618 /* CCache.m in Sources */,
 				05765A271EBA706C00D2DDDE /* MainViewController.m in Sources */,
