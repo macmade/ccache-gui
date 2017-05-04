@@ -105,6 +105,9 @@
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
+                            <connections>
+                                <action selector="install:" target="-2" id="eIg-DF-KN3"/>
+                            </connections>
                         </button>
                     </subviews>
                     <constraints>

@@ -53,6 +53,7 @@ NS_ASSUME_NONNULL_BEGIN
 - ( IBAction )clear:                 ( nullable id )sender;
 - ( IBAction )resetStatistics:       ( nullable id )sender;
 - ( IBAction )openManual:            ( nullable id )sender;
+- ( IBAction )install:               ( nullable id )sender;
 - ( IBAction )clearXcodeDerivedData: ( nullable id )sender;
 
 - ( void )updateStatistics;
@@ -274,6 +275,13 @@ NS_ASSUME_NONNULL_END
     ( void )sender;
     
     [ [ NSWorkspace sharedWorkspace ] openURL: [ NSURL URLWithString: @"https://ccache.samba.org/manual.html" ] ];
+}
+
+- ( IBAction )install: ( nullable id )sender
+{
+    ( void )sender;
+    
+    [ [ NSWorkspace sharedWorkspace ] openURL: [ NSURL URLWithString: @"https://brew.sh" ] ];
 }
 
 - ( IBAction )clearXcodeDerivedData: ( nullable id )sender
