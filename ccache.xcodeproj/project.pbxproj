@@ -16,6 +16,7 @@
 		05765A2A1EBA708600D2DDDE /* AboutWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05765A291EBA708600D2DDDE /* AboutWindowController.m */; };
 		05765A9F1EBA83C500D2DDDE /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05765A9D1EBA83C500D2DDDE /* MainViewController.xib */; };
 		05765AB51EBB20B000D2DDDE /* StatisticItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 05765AB41EBB20B000D2DDDE /* StatisticItem.m */; };
+		05765AB81EBB261D00D2DDDE /* AboutWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05765AB61EBB261D00D2DDDE /* AboutWindowController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		05765A9E1EBA83C500D2DDDE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainViewController.xib; sourceTree = "<group>"; };
 		05765AB31EBB20B000D2DDDE /* StatisticItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatisticItem.h; sourceTree = "<group>"; };
 		05765AB41EBB20B000D2DDDE /* StatisticItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatisticItem.m; sourceTree = "<group>"; };
+		05765AB71EBB261D00D2DDDE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AboutWindowController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 		050B84E01EB9C8070090EA12 /* Interface */ = {
 			isa = PBXGroup;
 			children = (
+				05765AB61EBB261D00D2DDDE /* AboutWindowController.xib */,
 				050B84FB1EB9CCD60090EA12 /* Images */,
 				050B84F81EB9C90C0090EA12 /* MainMenu.xib */,
 				05765A9D1EBA83C500D2DDDE /* MainViewController.xib */,
@@ -178,6 +181,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				050B85121EB9CEAD0090EA12 /* StatusIconTemplate.pdf in Resources */,
+				05765AB81EBB261D00D2DDDE /* AboutWindowController.xib in Resources */,
 				05765A9F1EBA83C500D2DDDE /* MainViewController.xib in Resources */,
 				050B84FA1EB9C90C0090EA12 /* MainMenu.xib in Resources */,
 			);
@@ -216,6 +220,14 @@
 				05765A9E1EBA83C500D2DDDE /* Base */,
 			);
 			name = MainViewController.xib;
+			sourceTree = "<group>";
+		};
+		05765AB61EBB261D00D2DDDE /* AboutWindowController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				05765AB71EBB261D00D2DDDE /* Base */,
+			);
+			name = AboutWindowController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

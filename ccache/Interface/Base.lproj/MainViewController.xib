@@ -43,6 +43,16 @@
                     </constraints>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="NSActionTemplate" id="ATz-Fg-bC0"/>
                 </imageView>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FWQ-B5-HfM">
+                    <rect key="frame" x="314" y="348" width="16" height="16"/>
+                    <buttonCell key="cell" type="bevel" bezelStyle="rounded" alignment="center" transparent="YES" imageScaling="proportionallyDown" inset="2" id="mQU-Od-SkX">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="showAboutWindow:" target="-1" id="8NN-b8-kHc"/>
+                    </connections>
+                </button>
                 <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="ah2-k5-AKT">
                     <rect key="frame" x="12" y="321" width="326" height="5"/>
                 </box>
@@ -244,14 +254,18 @@
             </subviews>
             <constraints>
                 <constraint firstItem="aDE-dZ-JLa" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" id="1Ub-rW-U3O"/>
+                <constraint firstItem="FWQ-B5-HfM" firstAttribute="centerY" secondItem="nCT-l4-gVy" secondAttribute="centerY" id="4xi-0k-GQX"/>
                 <constraint firstItem="ah2-k5-AKT" firstAttribute="top" secondItem="Oah-dg-WfU" secondAttribute="bottom" constant="8" id="75g-sg-Vio"/>
                 <constraint firstAttribute="trailing" secondItem="ah2-k5-AKT" secondAttribute="trailing" constant="12" id="7Vv-DQ-BFS"/>
                 <constraint firstItem="Xej-fg-s6T" firstAttribute="centerY" secondItem="aDE-dZ-JLa" secondAttribute="centerY" id="A8S-SK-MyU"/>
                 <constraint firstItem="MUd-0m-Zqh" firstAttribute="top" secondItem="NEd-BB-meu" secondAttribute="bottom" constant="8" id="GsY-BV-gnc"/>
                 <constraint firstItem="Oah-dg-WfU" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="20" id="H5H-fx-tF1"/>
+                <constraint firstItem="FWQ-B5-HfM" firstAttribute="width" secondItem="nCT-l4-gVy" secondAttribute="width" id="K0w-je-IlV"/>
+                <constraint firstItem="FWQ-B5-HfM" firstAttribute="centerX" secondItem="nCT-l4-gVy" secondAttribute="centerX" id="Lpc-Ff-Ljq"/>
                 <constraint firstAttribute="trailing" secondItem="NEd-BB-meu" secondAttribute="trailing" constant="12" id="M6P-dX-aA2"/>
                 <constraint firstItem="nCT-l4-gVy" firstAttribute="centerY" secondItem="Oah-dg-WfU" secondAttribute="centerY" id="OYY-7u-UlR"/>
                 <constraint firstAttribute="trailing" secondItem="nCT-l4-gVy" secondAttribute="trailing" constant="20" id="SOe-40-d48"/>
+                <constraint firstItem="FWQ-B5-HfM" firstAttribute="height" secondItem="nCT-l4-gVy" secondAttribute="height" id="Wga-tf-Amo"/>
                 <constraint firstAttribute="trailing" secondItem="aDE-dZ-JLa" secondAttribute="trailing" constant="20" id="XMz-lh-P4h"/>
                 <constraint firstItem="Xej-fg-s6T" firstAttribute="centerX" secondItem="aDE-dZ-JLa" secondAttribute="centerX" id="Z7A-ki-P5d"/>
                 <constraint firstItem="NEd-BB-meu" firstAttribute="top" secondItem="aDE-dZ-JLa" secondAttribute="bottom" constant="8" id="ZtO-D8-ZeC"/>

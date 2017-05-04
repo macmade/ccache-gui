@@ -29,17 +29,19 @@
 
 #import "ApplicationDelegate.h"
 #import "MainViewController.h"
+#import "AboutWindowController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ApplicationDelegate() < NSPopoverDelegate, NSWindowDelegate >
 
-@property( atomic, readwrite, strong           ) NSStatusItem       * statusItem;
-@property( atomic, readwrite, strong           ) MainViewController * mainViewController;
-@property( atomic, readwrite, strong, nullable ) NSWindow           * popoverWindow;
-@property( atomic, readwrite, strong, nullable ) NSPopover          * popover;
-@property( atomic, readwrite, strong, nullable ) id                   popoverTranscientEvent;
-@property( atomic, readwrite, assign           ) BOOL                 popoverIsOpen;
+@property( atomic, readwrite, strong           ) NSStatusItem          * statusItem;
+@property( atomic, readwrite, strong           ) AboutWindowController * aboutWindowController;
+@property( atomic, readwrite, strong           ) MainViewController    * mainViewController;
+@property( atomic, readwrite, strong, nullable ) NSWindow              * popoverWindow;
+@property( atomic, readwrite, strong, nullable ) NSPopover             * popover;
+@property( atomic, readwrite, strong, nullable ) id                      popoverTranscientEvent;
+@property( atomic, readwrite, assign           ) BOOL                    popoverIsOpen;
 
 - ( IBAction )togglePopover: ( nullable id )sender;
 
@@ -63,6 +65,22 @@ NS_ASSUME_NONNULL_END
 - ( void )applicationWillTerminate: ( NSNotification * )notification
 {
     ( void )notification;
+}
+
+- ( IBAction )showAboutWindow: ( nullable id )sender
+{
+    if( self.aboutWindowController == nil )
+    {
+        self.aboutWindowController = [ AboutWindowController new ];
+    }
+    
+    if( self.aboutWindowController.window.isVisible == NO )
+    {
+        [ self.aboutWindowController.window center ];
+    }
+    
+    [ self closePopover: sender ];
+    [ self.aboutWindowController.window makeKeyAndOrderFront: sender ];
 }
 
 - ( IBAction )openPopover: ( nullable id )sender

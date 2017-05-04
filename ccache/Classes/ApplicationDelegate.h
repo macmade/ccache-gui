@@ -33,8 +33,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ApplicationDelegate: NSObject < NSApplicationDelegate >
 
-- ( IBAction )openPopover: ( nullable id )sender;
-- ( IBAction )closePopover: ( nullable id )sender;
+- ( IBAction )showAboutWindow: ( nullable id )sender;
+- ( IBAction )openPopover:     ( nullable id )sender;
+- ( IBAction )closePopover:    ( nullable id )sender;
 
 @end
 
