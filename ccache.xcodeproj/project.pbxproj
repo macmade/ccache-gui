@@ -18,21 +18,7 @@
 		05765AB51EBB20B000D2DDDE /* StatisticItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 05765AB41EBB20B000D2DDDE /* StatisticItem.m */; };
 		05765AB81EBB261D00D2DDDE /* AboutWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05765AB61EBB261D00D2DDDE /* AboutWindowController.xib */; };
 		05765B101EBB99D300D2DDDE /* ccache.icns in Resources */ = {isa = PBXBuildFile; fileRef = 05765B0F1EBB99D300D2DDDE /* ccache.icns */; };
-		05765B3E1EBBA8CD00D2DDDE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 05765B3D1EBBA8CD00D2DDDE /* main.m */; };
-		05765B4D1EBBAA1A00D2DDDE /* ccache-login-item.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 05765B371EBBA8CD00D2DDDE /* ccache-login-item.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		05765B541EBBAAAB00D2DDDE /* ApplicationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 05765B501EBBAAAB00D2DDDE /* ApplicationDelegate.m */; };
-		05765B551EBBAAAB00D2DDDE /* ccache.icns in Resources */ = {isa = PBXBuildFile; fileRef = 05765B531EBBAAAB00D2DDDE /* ccache.icns */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		05765B4B1EBBAA0F00D2DDDE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 050B84C11EB93FF90090EA12 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 05765B361EBBA8CD00D2DDDE;
-			remoteInfo = "ccache-login-item";
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		05765B311EBBA6DF00D2DDDE /* CopyFiles */ = {
@@ -41,7 +27,6 @@
 			dstPath = Contents/Library/LoginItems;
 			dstSubfolderSpec = 1;
 			files = (
-				05765B4D1EBBAA1A00D2DDDE /* ccache-login-item.app in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,23 +51,10 @@
 		05765AB41EBB20B000D2DDDE /* StatisticItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatisticItem.m; sourceTree = "<group>"; };
 		05765AB71EBB261D00D2DDDE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AboutWindowController.xib; sourceTree = "<group>"; };
 		05765B0F1EBB99D300D2DDDE /* ccache.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = ccache.icns; sourceTree = "<group>"; };
-		05765B371EBBA8CD00D2DDDE /* ccache-login-item.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ccache-login-item.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		05765B3D1EBBA8CD00D2DDDE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		05765B471EBBA8CD00D2DDDE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		05765B4F1EBBAAAB00D2DDDE /* ApplicationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplicationDelegate.h; sourceTree = "<group>"; };
-		05765B501EBBAAAB00D2DDDE /* ApplicationDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplicationDelegate.m; sourceTree = "<group>"; };
-		05765B531EBBAAAB00D2DDDE /* ccache.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = ccache.icns; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		050B84C61EB93FF90090EA12 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		05765B341EBBA8CD00D2DDDE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -96,7 +68,6 @@
 			isa = PBXGroup;
 			children = (
 				050B84CB1EB93FF90090EA12 /* ccache */,
-				05765B381EBBA8CD00D2DDDE /* ccache-login-item */,
 				050B84CA1EB93FF90090EA12 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -105,7 +76,6 @@
 			isa = PBXGroup;
 			children = (
 				050B84C91EB93FF90090EA12 /* ccache.app */,
-				05765B371EBBA8CD00D2DDDE /* ccache-login-item.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -166,50 +136,6 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
-		05765B381EBBA8CD00D2DDDE /* ccache-login-item */ = {
-			isa = PBXGroup;
-			children = (
-				05765B4E1EBBAAAB00D2DDDE /* Classes */,
-				05765B511EBBAAAB00D2DDDE /* Interface */,
-				05765B3C1EBBA8CD00D2DDDE /* Supporting Files */,
-			);
-			path = "ccache-login-item";
-			sourceTree = "<group>";
-		};
-		05765B3C1EBBA8CD00D2DDDE /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				05765B471EBBA8CD00D2DDDE /* Info.plist */,
-				05765B3D1EBBA8CD00D2DDDE /* main.m */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		05765B4E1EBBAAAB00D2DDDE /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				05765B4F1EBBAAAB00D2DDDE /* ApplicationDelegate.h */,
-				05765B501EBBAAAB00D2DDDE /* ApplicationDelegate.m */,
-			);
-			path = Classes;
-			sourceTree = "<group>";
-		};
-		05765B511EBBAAAB00D2DDDE /* Interface */ = {
-			isa = PBXGroup;
-			children = (
-				05765B521EBBAAAB00D2DDDE /* Images */,
-			);
-			path = Interface;
-			sourceTree = "<group>";
-		};
-		05765B521EBBAAAB00D2DDDE /* Images */ = {
-			isa = PBXGroup;
-			children = (
-				05765B531EBBAAAB00D2DDDE /* ccache.icns */,
-			);
-			path = Images;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -225,28 +151,10 @@
 			buildRules = (
 			);
 			dependencies = (
-				05765B4C1EBBAA0F00D2DDDE /* PBXTargetDependency */,
 			);
 			name = ccache;
 			productName = ccache;
 			productReference = 050B84C91EB93FF90090EA12 /* ccache.app */;
-			productType = "com.apple.product-type.application";
-		};
-		05765B361EBBA8CD00D2DDDE /* ccache-login-item */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 05765B481EBBA8CD00D2DDDE /* Build configuration list for PBXNativeTarget "ccache-login-item" */;
-			buildPhases = (
-				05765B331EBBA8CD00D2DDDE /* Sources */,
-				05765B341EBBA8CD00D2DDDE /* Frameworks */,
-				05765B351EBBA8CD00D2DDDE /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "ccache-login-item";
-			productName = "ccache-login-item";
-			productReference = 05765B371EBBA8CD00D2DDDE /* ccache-login-item.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -259,11 +167,6 @@
 				ORGANIZATIONNAME = "XS-Labs";
 				TargetAttributes = {
 					050B84C81EB93FF90090EA12 = {
-						CreatedOnToolsVersion = 8.3.1;
-						DevelopmentTeam = 326Y53CJMD;
-						ProvisioningStyle = Automatic;
-					};
-					05765B361EBBA8CD00D2DDDE = {
 						CreatedOnToolsVersion = 8.3.1;
 						DevelopmentTeam = 326Y53CJMD;
 						ProvisioningStyle = Automatic;
@@ -284,7 +187,6 @@
 			projectRoot = "";
 			targets = (
 				050B84C81EB93FF90090EA12 /* ccache */,
-				05765B361EBBA8CD00D2DDDE /* ccache-login-item */,
 			);
 		};
 /* End PBXProject section */
@@ -299,14 +201,6 @@
 				05765B101EBB99D300D2DDDE /* ccache.icns in Resources */,
 				05765A9F1EBA83C500D2DDDE /* MainViewController.xib in Resources */,
 				050B84FA1EB9C90C0090EA12 /* MainMenu.xib in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		05765B351EBBA8CD00D2DDDE /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				05765B551EBBAAAB00D2DDDE /* ccache.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,24 +220,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		05765B331EBBA8CD00D2DDDE /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				05765B3E1EBBA8CD00D2DDDE /* main.m in Sources */,
-				05765B541EBBAAAB00D2DDDE /* ApplicationDelegate.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		05765B4C1EBBAA0F00D2DDDE /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 05765B361EBBA8CD00D2DDDE /* ccache-login-item */;
-			targetProxy = 05765B4B1EBBAA0F00D2DDDE /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		050B84F81EB9C90C0090EA12 /* MainMenu.xib */ = {
@@ -624,34 +501,6 @@
 			};
 			name = Release;
 		};
-		05765B491EBBA8CD00D2DDDE /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				DEVELOPMENT_TEAM = 326Y53CJMD;
-				INFOPLIST_FILE = "ccache-login-item/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.xs-labs.ccache-login-item";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		05765B4A1EBBA8CD00D2DDDE /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "Mac Developer";
-				DEVELOPMENT_TEAM = 326Y53CJMD;
-				INFOPLIST_FILE = "ccache-login-item/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.xs-labs.ccache-login-item";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -669,15 +518,6 @@
 			buildConfigurations = (
 				050B84DE1EB93FF90090EA12 /* Debug */,
 				050B84DF1EB93FF90090EA12 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		05765B481EBBA8CD00D2DDDE /* Build configuration list for PBXNativeTarget "ccache-login-item" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				05765B491EBBA8CD00D2DDDE /* Debug */,
-				05765B4A1EBBA8CD00D2DDDE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
