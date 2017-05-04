@@ -18,37 +18,15 @@
 		05765AB51EBB20B000D2DDDE /* StatisticItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 05765AB41EBB20B000D2DDDE /* StatisticItem.m */; };
 		05765AB81EBB261D00D2DDDE /* AboutWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05765AB61EBB261D00D2DDDE /* AboutWindowController.xib */; };
 		05765B101EBB99D300D2DDDE /* ccache.icns in Resources */ = {isa = PBXBuildFile; fileRef = 05765B0F1EBB99D300D2DDDE /* ccache.icns */; };
-		05765B2B1EBBA62E00D2DDDE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 05765B2A1EBBA62E00D2DDDE /* main.m */; };
-		05765B321EBBA6F200D2DDDE /* ccache-login-item in CopyFiles */ = {isa = PBXBuildFile; fileRef = 05765B281EBBA62E00D2DDDE /* ccache-login-item */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		05765B2F1EBBA6DC00D2DDDE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 050B84C11EB93FF90090EA12 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 05765B271EBBA62E00D2DDDE;
-			remoteInfo = "ccache-login-item";
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXCopyFilesBuildPhase section */
-		05765B261EBBA62E00D2DDDE /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-		};
 		05765B311EBBA6DF00D2DDDE /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 6;
 			files = (
-				05765B321EBBA6F200D2DDDE /* ccache-login-item in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,19 +51,11 @@
 		05765AB41EBB20B000D2DDDE /* StatisticItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatisticItem.m; sourceTree = "<group>"; };
 		05765AB71EBB261D00D2DDDE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AboutWindowController.xib; sourceTree = "<group>"; };
 		05765B0F1EBB99D300D2DDDE /* ccache.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = ccache.icns; sourceTree = "<group>"; };
-		05765B281EBBA62E00D2DDDE /* ccache-login-item */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "ccache-login-item"; sourceTree = BUILT_PRODUCTS_DIR; };
 		05765B2A1EBBA62E00D2DDDE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		050B84C61EB93FF90090EA12 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		05765B251EBBA62E00D2DDDE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -108,7 +78,6 @@
 			isa = PBXGroup;
 			children = (
 				050B84C91EB93FF90090EA12 /* ccache.app */,
-				05765B281EBBA62E00D2DDDE /* ccache-login-item */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -192,29 +161,11 @@
 			buildRules = (
 			);
 			dependencies = (
-				05765B301EBBA6DC00D2DDDE /* PBXTargetDependency */,
 			);
 			name = ccache;
 			productName = ccache;
 			productReference = 050B84C91EB93FF90090EA12 /* ccache.app */;
 			productType = "com.apple.product-type.application";
-		};
-		05765B271EBBA62E00D2DDDE /* ccache-login-item */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 05765B2C1EBBA62E00D2DDDE /* Build configuration list for PBXNativeTarget "ccache-login-item" */;
-			buildPhases = (
-				05765B241EBBA62E00D2DDDE /* Sources */,
-				05765B251EBBA62E00D2DDDE /* Frameworks */,
-				05765B261EBBA62E00D2DDDE /* CopyFiles */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "ccache-login-item";
-			productName = "ccache-login-item";
-			productReference = 05765B281EBBA62E00D2DDDE /* ccache-login-item */;
-			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
 
@@ -226,11 +177,6 @@
 				ORGANIZATIONNAME = "XS-Labs";
 				TargetAttributes = {
 					050B84C81EB93FF90090EA12 = {
-						CreatedOnToolsVersion = 8.3.1;
-						DevelopmentTeam = 326Y53CJMD;
-						ProvisioningStyle = Automatic;
-					};
-					05765B271EBBA62E00D2DDDE = {
 						CreatedOnToolsVersion = 8.3.1;
 						DevelopmentTeam = 326Y53CJMD;
 						ProvisioningStyle = Automatic;
@@ -251,7 +197,6 @@
 			projectRoot = "";
 			targets = (
 				050B84C81EB93FF90090EA12 /* ccache */,
-				05765B271EBBA62E00D2DDDE /* ccache-login-item */,
 			);
 		};
 /* End PBXProject section */
@@ -285,23 +230,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		05765B241EBBA62E00D2DDDE /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				05765B2B1EBBA62E00D2DDDE /* main.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		05765B301EBBA6DC00D2DDDE /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 05765B271EBBA62E00D2DDDE /* ccache-login-item */;
-			targetProxy = 05765B2F1EBBA6DC00D2DDDE /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		050B84F81EB9C90C0090EA12 /* MainMenu.xib */ = {
@@ -582,26 +511,6 @@
 			};
 			name = Release;
 		};
-		05765B2D1EBBA62E00D2DDDE /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				DEVELOPMENT_TEAM = 326Y53CJMD;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-			};
-			name = Debug;
-		};
-		05765B2E1EBBA62E00D2DDDE /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "Mac Developer";
-				DEVELOPMENT_TEAM = 326Y53CJMD;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -622,14 +531,6 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
-		};
-		05765B2C1EBBA62E00D2DDDE /* Build configuration list for PBXNativeTarget "ccache-login-item" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				05765B2D1EBBA62E00D2DDDE /* Debug */,
-				05765B2E1EBBA62E00D2DDDE /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
