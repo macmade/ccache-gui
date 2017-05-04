@@ -10,6 +10,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="MainViewController">
             <connections>
                 <outlet property="statisticsController" destination="oMp-ru-fmd" id="NNm-AP-EET"/>
+                <outlet property="tableView" destination="p5a-gg-oAZ" id="OHC-gG-Gbt"/>
                 <outlet property="view" destination="c22-O7-iKe" id="vdz-Gf-J4c"/>
             </connections>
         </customObject>
@@ -68,6 +69,64 @@
                         </binding>
                     </connections>
                 </progressIndicator>
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="FW4-mt-4Q1">
+                    <rect key="frame" x="20" y="0.0" width="310" height="315"/>
+                    <subviews>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FcC-HG-zT4">
+                            <rect key="frame" x="60" y="267" width="191" height="24"/>
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="ccache is not installed" id="fmb-hu-j6G">
+                                <font key="font" metaFont="systemThin" size="20"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                            <connections>
+                                <binding destination="-2" name="hidden2" keyPath="installed" previousBinding="42o-sE-EpH" id="v0P-JS-ziX">
+                                    <dictionary key="options">
+                                        <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                        <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                        <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                        <integer key="NSNullPlaceholder" value="-1"/>
+                                    </dictionary>
+                                </binding>
+                                <binding destination="-2" name="hidden" keyPath="running" id="42o-sE-EpH"/>
+                            </connections>
+                        </textField>
+                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uKC-jM-PQ0">
+                            <rect key="frame" x="91" y="109" width="128" height="128"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="128" id="3Mw-e5-otu"/>
+                                <constraint firstAttribute="height" constant="128" id="i0Y-Tj-wxc"/>
+                            </constraints>
+                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="NSCaution" id="u7a-kR-ufr"/>
+                        </imageView>
+                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="M5l-VL-ldK">
+                            <rect key="frame" x="68" y="41" width="175" height="32"/>
+                            <buttonCell key="cell" type="push" title="Install with HomeBrew" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Xfz-hi-EGL">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="uKC-jM-PQ0" firstAttribute="top" secondItem="FcC-HG-zT4" secondAttribute="bottom" constant="30" id="6En-nT-1SF"/>
+                        <constraint firstItem="uKC-jM-PQ0" firstAttribute="centerX" secondItem="FW4-mt-4Q1" secondAttribute="centerX" id="7Xy-pb-JRU"/>
+                        <constraint firstItem="uKC-jM-PQ0" firstAttribute="centerY" secondItem="FW4-mt-4Q1" secondAttribute="centerY" constant="-15.5" id="8Oe-yW-vaP"/>
+                        <constraint firstItem="M5l-VL-ldK" firstAttribute="top" secondItem="uKC-jM-PQ0" secondAttribute="bottom" constant="40" id="XEf-ti-6dR"/>
+                        <constraint firstItem="FcC-HG-zT4" firstAttribute="centerX" secondItem="FW4-mt-4Q1" secondAttribute="centerX" id="dEc-Kt-z5n"/>
+                        <constraint firstItem="M5l-VL-ldK" firstAttribute="centerX" secondItem="FW4-mt-4Q1" secondAttribute="centerX" id="ohu-w2-jAu"/>
+                    </constraints>
+                    <connections>
+                        <binding destination="-2" name="hidden2" keyPath="running" previousBinding="8J9-d0-ZNU" id="jr5-Hg-doR">
+                            <dictionary key="options">
+                                <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                <integer key="NSNullPlaceholder" value="-1"/>
+                            </dictionary>
+                        </binding>
+                        <binding destination="-2" name="hidden" keyPath="installed" id="8J9-d0-ZNU"/>
+                    </connections>
+                </customView>
                 <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="17" horizontalPageScroll="10" verticalLineScroll="17" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aDE-dZ-JLa">
                     <rect key="frame" x="20" y="68" width="310" height="247"/>
                     <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="TIk-1v-fgx">
@@ -175,6 +234,9 @@
                             </tableView>
                         </subviews>
                     </clipView>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="247" id="kh4-dt-ngW"/>
+                    </constraints>
                     <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="pno-X6-2rr">
                         <rect key="frame" x="0.0" y="231" width="310" height="16"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -184,11 +246,27 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <connections>
+                        <binding destination="-2" name="hidden2" keyPath="installed" previousBinding="wIe-Aw-s7X" id="h4O-Uz-OgI">
+                            <dictionary key="options">
+                                <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                <integer key="NSNullPlaceholder" value="-1"/>
+                                <string key="NSValueTransformerName">NSNegateBoolean</string>
+                            </dictionary>
+                        </binding>
                         <binding destination="-2" name="hidden" keyPath="running" id="wIe-Aw-s7X"/>
                     </connections>
                 </scrollView>
                 <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="NEd-BB-meu">
                     <rect key="frame" x="12" y="57" width="326" height="5"/>
+                    <connections>
+                        <binding destination="-2" name="hidden" keyPath="installed" id="ltI-HI-8M0">
+                            <dictionary key="options">
+                                <string key="NSValueTransformerName">NSNegateBoolean</string>
+                            </dictionary>
+                        </binding>
+                    </connections>
                 </box>
                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="MUd-0m-Zqh">
                     <rect key="frame" x="13" y="0.0" width="324" height="51"/>
@@ -249,6 +327,13 @@
                         <constraint firstItem="pcl-gJ-ipB" firstAttribute="leading" secondItem="MUd-0m-Zqh" secondAttribute="leading" constant="20" id="qrz-rc-q93"/>
                         <constraint firstItem="C0F-Tj-oyB" firstAttribute="centerY" secondItem="pcl-gJ-ipB" secondAttribute="centerY" id="vBN-ih-kqZ"/>
                     </constraints>
+                    <connections>
+                        <binding destination="-2" name="hidden" keyPath="installed" id="4pq-nP-W57">
+                            <dictionary key="options">
+                                <string key="NSValueTransformerName">NSNegateBoolean</string>
+                            </dictionary>
+                        </binding>
+                    </connections>
                 </customView>
             </subviews>
             <constraints>
@@ -259,10 +344,12 @@
                 <constraint firstItem="Xej-fg-s6T" firstAttribute="centerY" secondItem="aDE-dZ-JLa" secondAttribute="centerY" id="A8S-SK-MyU"/>
                 <constraint firstItem="MUd-0m-Zqh" firstAttribute="top" secondItem="NEd-BB-meu" secondAttribute="bottom" constant="8" id="GsY-BV-gnc"/>
                 <constraint firstItem="Oah-dg-WfU" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="20" id="H5H-fx-tF1"/>
+                <constraint firstAttribute="bottom" secondItem="FW4-mt-4Q1" secondAttribute="bottom" id="He1-K9-1Br"/>
                 <constraint firstItem="FWQ-B5-HfM" firstAttribute="width" secondItem="nCT-l4-gVy" secondAttribute="width" id="K0w-je-IlV"/>
                 <constraint firstItem="FWQ-B5-HfM" firstAttribute="centerX" secondItem="nCT-l4-gVy" secondAttribute="centerX" id="Lpc-Ff-Ljq"/>
                 <constraint firstAttribute="trailing" secondItem="NEd-BB-meu" secondAttribute="trailing" constant="12" id="M6P-dX-aA2"/>
                 <constraint firstItem="nCT-l4-gVy" firstAttribute="centerY" secondItem="Oah-dg-WfU" secondAttribute="centerY" id="OYY-7u-UlR"/>
+                <constraint firstAttribute="trailing" secondItem="FW4-mt-4Q1" secondAttribute="trailing" constant="20" id="Ray-6F-Srk"/>
                 <constraint firstAttribute="trailing" secondItem="nCT-l4-gVy" secondAttribute="trailing" constant="20" id="SOe-40-d48"/>
                 <constraint firstItem="m3E-bf-ytC" firstAttribute="leading" secondItem="Oah-dg-WfU" secondAttribute="trailing" constant="8" id="W4M-Xj-Zze"/>
                 <constraint firstItem="FWQ-B5-HfM" firstAttribute="height" secondItem="nCT-l4-gVy" secondAttribute="height" id="Wga-tf-Amo"/>
@@ -273,9 +360,11 @@
                 <constraint firstItem="MUd-0m-Zqh" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="pWo-b0-WjS"/>
                 <constraint firstItem="aDE-dZ-JLa" firstAttribute="top" secondItem="ah2-k5-AKT" secondAttribute="bottom" constant="8" id="pja-gM-P6V"/>
                 <constraint firstItem="NEd-BB-meu" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="12" id="qpZ-uv-bwn"/>
+                <constraint firstItem="FW4-mt-4Q1" firstAttribute="top" secondItem="ah2-k5-AKT" secondAttribute="bottom" constant="8" id="tQb-8B-EcU"/>
                 <constraint firstItem="ah2-k5-AKT" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="12" id="tuO-mP-qpM"/>
                 <constraint firstItem="Oah-dg-WfU" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" id="uzo-i9-y9Q"/>
                 <constraint firstItem="ah2-k5-AKT" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="wbX-Tf-wrw"/>
+                <constraint firstItem="FW4-mt-4Q1" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" id="ycK-CO-kqW"/>
                 <constraint firstItem="m3E-bf-ytC" firstAttribute="centerY" secondItem="Oah-dg-WfU" secondAttribute="centerY" id="zJo-qq-uTd"/>
             </constraints>
             <point key="canvasLocation" x="81" y="63"/>
@@ -330,6 +419,7 @@
     </objects>
     <resources>
         <image name="NSActionTemplate" width="14" height="14"/>
+        <image name="NSCaution" width="32" height="32"/>
         <image name="ccache" width="512" height="512"/>
     </resources>
 </document>

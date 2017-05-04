@@ -30,6 +30,7 @@
 #import "MainViewController.h"
 #import "CCache.h"
 #import "StatisticItem.h"
+#import "NSView+ccache.h"
 
 static NSDictionary< NSString *, NSString * > * tooltips = nil;
 
@@ -38,10 +39,14 @@ NS_ASSUME_NONNULL_BEGIN
 @interface MainViewController() < NSTableViewDelegate, NSTableViewDataSource >
 
 @property( atomic, readwrite, assign           )          BOOL                         awake;
+@property( atomic, readwrite, assign           )          BOOL                         installed;
 @property( atomic, readwrite, assign           )          BOOL                         running;
+@property( atomic, readwrite, assign           )          CGFloat                      rowHeight;
+@property( atomic, readwrite, assign           )          CGFloat                      tableViewHeight;
 @property( atomic, readwrite, strong, nullable )          NSTimer                    * timer;
 @property( atomic, readwrite, strong, nullable )          NSArray< StatisticItem * > * statistics;
 @property( atomic, readwrite, strong, nullable ) IBOutlet NSArrayController          * statisticsController;
+@property( atomic, readwrite, strong, nullable ) IBOutlet NSTableView                * tableView;
 
 - ( IBAction )showOptionsMenu:       ( id )sender;
 - ( IBAction )cleanup:               ( nullable id )sender;
@@ -51,6 +56,7 @@ NS_ASSUME_NONNULL_BEGIN
 - ( IBAction )clearXcodeDerivedData: ( nullable id )sender;
 
 - ( void )updateStatistics;
+- ( void )adjustTableViewHeight;
 
 @end
 
@@ -103,6 +109,8 @@ NS_ASSUME_NONNULL_END
     if( ( self = [ super initWithNibName: name bundle: bundle ] ) )
     {
         self.statistics = @[];
+        self.rowHeight  = 17.0;
+        self.installed  = [ CCache sharedInstance ].installed;
     }
     
     return self;
@@ -115,11 +123,11 @@ NS_ASSUME_NONNULL_END
         return;
     }
     
-    self.awake = YES;
+    self.awake                                = YES;
+    self.tableViewHeight                      = [ self.tableView.enclosingScrollView constantForAttribute: NSLayoutAttributeHeight ];
+    self.statisticsController.sortDescriptors = @[ [ NSSortDescriptor sortDescriptorWithKey: NSStringFromSelector( @selector( label ) ) ascending: YES selector: @selector( localizedCaseInsensitiveCompare: ) ] ];
     
     [ self updateStatistics ];
-    
-    self.statisticsController.sortDescriptors = @[ [ NSSortDescriptor sortDescriptorWithKey: NSStringFromSelector( @selector( label ) ) ascending: YES selector: @selector( localizedCaseInsensitiveCompare: ) ] ];
 }
 
 - ( void )viewDidAppear
@@ -255,6 +263,8 @@ NS_ASSUME_NONNULL_END
                 [ self.statisticsController addObjects:    items ];
                 [ self.statisticsController didChangeArrangementCriteria ];
             }
+            
+            [ self adjustTableViewHeight ];
         }
     ];
 }
@@ -325,6 +335,28 @@ NS_ASSUME_NONNULL_END
             );
         }
     );
+}
+
+- ( void )adjustTableViewHeight
+{
+    if( self.installed && self.statistics.count != 0 )
+    {
+        [ self.tableView.enclosingScrollView setConstant: self.statistics.count * self.rowHeight forAttribute: NSLayoutAttributeHeight ];
+    }
+    else
+    {
+        [ self.tableView.enclosingScrollView setConstant: self.tableViewHeight forAttribute: NSLayoutAttributeHeight ];
+    }
+}
+
+#pragma mark - NSTableViewDelegate
+
+- ( CGFloat )tableView: ( NSTableView * )tableView heightOfRow: ( NSInteger )row
+{
+    ( void )tableView;
+    ( void )row;
+    
+    return self.rowHeight;
 }
 
 @end
