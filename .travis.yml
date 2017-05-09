@@ -1,6 +1,18 @@
 language: objective-c
-xcode_project: ccache.xcodeproj
-xcode_scheme: ccache
-osx_image: xcode8.1
+osx_image: xcode8.3
+cache:
+    directories:
+    - $HOME/.ccache
+install:
+- gem install xcpretty
+- brew install ccache
+- PATH=$PATH:/usr/local/opt/ccache/libexec
 script:
-    - xcodebuild build -project ccache.xcodeproj -scheme ccache
+- set -o pipefail && xcodebuild -project "ccache" -scheme "ccache" build analyze | xcpretty
+before_script:
+- ccache -s
+- ccache -z
+after_script:
+- ccache -s
+notifications:
+    slack: xs-labs:FXh1yLXNkpcVxKZhZU6icdhI
