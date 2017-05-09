@@ -119,6 +119,7 @@
                         <constraint firstItem="M5l-VL-ldK" firstAttribute="centerX" secondItem="FW4-mt-4Q1" secondAttribute="centerX" id="ohu-w2-jAu"/>
                     </constraints>
                     <connections>
+                        <binding destination="-2" name="hidden" keyPath="installed" id="8J9-d0-ZNU"/>
                         <binding destination="-2" name="hidden2" keyPath="running" previousBinding="8J9-d0-ZNU" id="jr5-Hg-doR">
                             <dictionary key="options">
                                 <integer key="NSMultipleValuesPlaceholder" value="-1"/>
@@ -127,7 +128,6 @@
                                 <integer key="NSNullPlaceholder" value="-1"/>
                             </dictionary>
                         </binding>
-                        <binding destination="-2" name="hidden" keyPath="installed" id="8J9-d0-ZNU"/>
                     </connections>
                 </customView>
                 <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="17" horizontalPageScroll="10" verticalLineScroll="17" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aDE-dZ-JLa">
@@ -396,17 +396,17 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="openManual:" target="-2" id="PgU-uS-cvr"/>
-                        <binding destination="-2" name="enabled" keyPath="running" id="bhJ-b3-93v">
-                            <dictionary key="options">
-                                <string key="NSValueTransformerName">NSNegateBoolean</string>
-                            </dictionary>
-                        </binding>
                     </connections>
                 </menuItem>
                 <menuItem title="Clear Xcode Derived Data" id="WBh-kl-HTF">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="clearXcodeDerivedData:" target="-2" id="KML-AR-dZK"/>
+                        <binding destination="-2" name="enabled" keyPath="running" id="cXD-AK-BPA">
+                            <dictionary key="options">
+                                <string key="NSValueTransformerName">NSNegateBoolean</string>
+                            </dictionary>
+                        </binding>
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="GN6-Xq-yGJ"/>
