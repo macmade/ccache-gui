@@ -8,7 +8,7 @@ install:
 - brew install ccache
 - PATH=$PATH:/usr/local/opt/ccache/libexec
 script:
-- set -o pipefail && xcodebuild -project "ccache" -scheme "ccache" build analyze | xcpretty
+- set -o pipefail && xcodebuild -project "ccache.xcodeproj" -scheme "ccache" build analyze | xcpretty
 before_script:
 - ccache -s
 - ccache -z
