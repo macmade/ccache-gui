@@ -27,7 +27,7 @@
  * @copyright   (c) 2017, Jean-David Gadina - www.xs-labs.com / www.imazing.com
  */
 
-@import Cocoa;
+#import <Cocoa/Cocoa.h>
 
 int main( int argc, const char * argv[] )
 {
