@@ -398,11 +398,23 @@
                         <action selector="openManual:" target="-2" id="PgU-uS-cvr"/>
                     </connections>
                 </menuItem>
+                <menuItem isSeparatorItem="YES" id="USz-z9-kJK"/>
                 <menuItem title="Clear Xcode Derived Data" id="WBh-kl-HTF">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="clearXcodeDerivedData:" target="-2" id="KML-AR-dZK"/>
                         <binding destination="-2" name="enabled" keyPath="running" id="cXD-AK-BPA">
+                            <dictionary key="options">
+                                <string key="NSValueTransformerName">NSNegateBoolean</string>
+                            </dictionary>
+                        </binding>
+                    </connections>
+                </menuItem>
+                <menuItem title="Reveal Xcode Derived Data in Finder..." id="Z5Y-ej-Mnv">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="revealXcodeDerivedData:" target="-2" id="h4o-aH-2Lr"/>
+                        <binding destination="-2" name="enabled" keyPath="running" id="rgi-zY-IbZ">
                             <dictionary key="options">
                                 <string key="NSValueTransformerName">NSNegateBoolean</string>
                             </dictionary>

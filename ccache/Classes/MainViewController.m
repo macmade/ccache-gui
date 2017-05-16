@@ -28,6 +28,7 @@
  */
 
 #import "MainViewController.h"
+#import "ApplicationDelegate.h"
 #import "CCache.h"
 #import "StatisticItem.h"
 #import "NSView+ccache.h"
@@ -45,19 +46,23 @@ NS_ASSUME_NONNULL_BEGIN
 @property( atomic, readwrite, assign           )          CGFloat                      tableViewHeight;
 @property( atomic, readwrite, strong, nullable )          NSTimer                    * timer;
 @property( atomic, readwrite, strong, nullable )          NSArray< StatisticItem * > * statistics;
+@property( atomic, readonly,          nullable )          NSString                   * xcodeDerivedDataPath;
+@property( atomic, readonly,          nullable )          NSURL                      * xcodeDerivedDataURL;
 @property( atomic, readwrite, strong, nullable ) IBOutlet NSArrayController          * statisticsController;
 @property( atomic, readwrite, strong, nullable ) IBOutlet NSTableView                * tableView;
 
-- ( IBAction )showOptionsMenu:       ( id )sender;
-- ( IBAction )cleanup:               ( nullable id )sender;
-- ( IBAction )clear:                 ( nullable id )sender;
-- ( IBAction )resetStatistics:       ( nullable id )sender;
-- ( IBAction )openManual:            ( nullable id )sender;
-- ( IBAction )install:               ( nullable id )sender;
-- ( IBAction )clearXcodeDerivedData: ( nullable id )sender;
+- ( IBAction )showOptionsMenu:        ( id )sender;
+- ( IBAction )cleanup:                ( nullable id )sender;
+- ( IBAction )clear:                  ( nullable id )sender;
+- ( IBAction )resetStatistics:        ( nullable id )sender;
+- ( IBAction )openManual:             ( nullable id )sender;
+- ( IBAction )install:                ( nullable id )sender;
+- ( IBAction )clearXcodeDerivedData:  ( nullable id )sender;
+- ( IBAction )revealXcodeDerivedData: ( nullable id )sender;
 
 - ( void )updateStatistics;
 - ( void )adjustTableViewHeight;
+- ( void )alertForMissingXcodeDerivedDataDirectory;
 
 @end
 
@@ -284,9 +289,57 @@ NS_ASSUME_NONNULL_END
     [ [ NSWorkspace sharedWorkspace ] openURL: [ NSURL URLWithString: @"https://brew.sh" ] ];
 }
 
+- ( nullable NSString * )xcodeDerivedDataPath
+{
+    NSString * library;
+    NSString * path;
+    BOOL       dir;
+    
+    library = NSSearchPathForDirectoriesInDomains( NSLibraryDirectory, NSUserDomainMask, YES ).firstObject;
+    
+    if( library.length && [ [ NSFileManager defaultManager ] fileExistsAtPath: library ] )
+    {
+        path = [ library stringByAppendingPathComponent: @"Developer" ];
+        path = [ path    stringByAppendingPathComponent: @"Xcode" ];
+        path = [ path    stringByAppendingPathComponent: @"DerivedData" ];
+        
+        if( path.length && [ [ NSFileManager defaultManager ] fileExistsAtPath: path isDirectory: &dir ] && dir )
+        {
+            return path;
+        }
+    }
+    
+    return nil;
+}
+
+- ( nullable NSURL * )xcodeDerivedDataURL
+{
+    NSString * path;
+    
+    path = self.xcodeDerivedDataPath;
+    
+    if( path != nil )
+    {
+        return [ NSURL fileURLWithPath: path ];
+    }
+    
+    return nil;
+}
+
 - ( IBAction )clearXcodeDerivedData: ( nullable id )sender
 {
+    NSString * path;
+    
     ( void )sender;
+    
+    path = self.xcodeDerivedDataPath;
+    
+    if( path == nil )
+    {
+        [ self alertForMissingXcodeDerivedDataDirectory ];
+        
+        return;
+    }
     
     self.running = YES;
     
@@ -295,32 +348,16 @@ NS_ASSUME_NONNULL_END
         dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_HIGH, 0 ),
         ^( void )
         {
-            NSString * library;
-            NSString * path;
             NSString * sub;
             NSError  * error;
-            BOOL       dir;
             
-            library = NSSearchPathForDirectoriesInDomains( NSLibraryDirectory, NSUserDomainMask, YES ).firstObject;
-            error   = nil;
-            
-            if( library.length && [ [ NSFileManager defaultManager ] fileExistsAtPath: library ] )
+            for( sub in [ [ NSFileManager defaultManager ] contentsOfDirectoryAtPath: path error: NULL ] )
             {
-                path = [ library stringByAppendingPathComponent: @"Developer" ];
-                path = [ path    stringByAppendingPathComponent: @"Xcode" ];
-                path = [ path    stringByAppendingPathComponent: @"DerivedData" ];
+                [ [ NSFileManager defaultManager ] removeItemAtPath: [ path stringByAppendingPathComponent: sub ] error: &error ];
                 
-                if( path.length && [ [ NSFileManager defaultManager ] fileExistsAtPath: path isDirectory: &dir ] && dir )
+                if( error != nil )
                 {
-                    for( sub in [ [ NSFileManager defaultManager ] contentsOfDirectoryAtPath: path error: NULL ] )
-                    {
-                        [ [ NSFileManager defaultManager ] removeItemAtPath: [ path stringByAppendingPathComponent: sub ] error: &error ];
-                        
-                        if( error != nil )
-                        {
-                            break;
-                        }
-                    }
+                    break;
                 }
             }
             
@@ -343,6 +380,36 @@ NS_ASSUME_NONNULL_END
             );
         }
     );
+}
+
+- ( IBAction )revealXcodeDerivedData: ( nullable id )sender
+{
+    NSString * path;
+    
+    path = self.xcodeDerivedDataPath;
+    
+    if( path == nil )
+    {
+        [ self alertForMissingXcodeDerivedDataDirectory ];
+        
+        return;
+    }
+    
+    [ ( ApplicationDelegate * )( NSApp.delegate ) closePopover: sender ];
+    [ [ NSWorkspace sharedWorkspace ] selectFile: nil inFileViewerRootedAtPath: path ];
+}
+
+- ( void )alertForMissingXcodeDerivedDataDirectory
+{
+    NSAlert * alert;
+    
+    alert                 = [ NSAlert new ];
+    alert.messageText     = NSLocalizedString( @"No Derived Data", @"" );
+    alert.informativeText = NSLocalizedString( @"The Xcode Derived Data directory does not exist.", @"" );
+    
+    [ alert addButtonWithTitle: NSLocalizedString( @"OK", @"" ) ];
+    [ ( ApplicationDelegate * )( NSApp.delegate ) closePopover: nil ];
+    [ alert runModal ];
 }
 
 - ( void )adjustTableViewHeight
