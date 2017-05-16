@@ -70,7 +70,9 @@ NS_ASSUME_NONNULL_END
 {
     ( void )notification;
     
+    [ [ NSNotificationCenter defaultCenter ] removeObserver: self ];
     [ self removeObserver: self forKeyPath: NSStringFromSelector( @selector( startAtLogin ) ) ];
+    [ self.popoverWindow removeObserver: self forKeyPath: @"visible" ];
 }
 
 - ( void )observeValueForKeyPath: ( NSString * )keyPath ofObject: ( id )object change: ( NSDictionary< NSKeyValueChangeKey, id > * )change context: ( void * )context
@@ -84,6 +86,15 @@ NS_ASSUME_NONNULL_END
         else
         {
             [ NSApp disableLoginItem ];
+        }
+    }
+    else if( object == self.popoverWindow && [ keyPath isEqualToString: @"visible" ] )
+    {
+        if( self.popoverWindow.contentView != self.mainViewController.view )
+        {
+            self.popoverWindow.contentView = self.popover.contentViewController.view;
+            self.popover                   = nil;
+            self.popoverIsOpen             = NO;
         }
     }
     else
@@ -182,6 +193,8 @@ NS_ASSUME_NONNULL_END
 {
     if( notification.object == self.popoverWindow )
     {
+        [ self.popoverWindow removeObserver: self forKeyPath: @"visible" ];
+        
         self.popoverWindow.delegate = nil;
         self.popoverWindow          = nil;
     }
@@ -204,24 +217,18 @@ NS_ASSUME_NONNULL_END
     mask = NSWindowStyleMaskTitled | NSWindowStyleMaskClosable | NSWindowStyleMaskMiniaturizable | NSWindowStyleMaskFullSizeContentView;
     
     window                            = [ [ NSWindow alloc ] initWithContentRect: popover.contentViewController.view.bounds styleMask: mask backing: NSBackingStoreBuffered defer: NO ];
-    window.contentView                = popover.contentViewController.view;
     window.delegate                   = self;
     window.releasedWhenClosed         = NO;
     window.titlebarAppearsTransparent = YES;
     window.titleVisibility            = NSWindowTitleHidden;
     window.title                      = [ [ NSBundle mainBundle ] objectForInfoDictionaryKey: @"CFBundleName" ];
     
-    [ window center ];
-    [ window makeKeyAndOrderFront: nil ];
-    
     [ [ NSNotificationCenter defaultCenter ] removeObserver: self name: NSPopoverWillShowNotification  object: self.popover ];
     [ [ NSNotificationCenter defaultCenter ] removeObserver: self name: NSPopoverWillCloseNotification object: self.popover ];
     
-    [ self.popover close ];
-    
-    self.popover       = nil;
     self.popoverWindow = window;
-    self.popoverIsOpen = NO;
+    
+    [ self.popoverWindow addObserver: self forKeyPath: @"visible" options: 0 context: NULL ];
     
     return window;
 }
