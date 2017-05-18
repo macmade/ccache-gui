@@ -31,6 +31,7 @@
 #import "MainViewController.h"
 #import "AboutWindowController.h"
 #import "NSApplication+LaunchServices.h"
+#import "AppInstaller.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -43,6 +44,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property( atomic, readwrite, strong, nullable ) NSPopover             * popover;
 @property( atomic, readwrite, strong, nullable ) id                      popoverTranscientEvent;
 @property( atomic, readwrite, assign           ) BOOL                    popoverIsOpen;
+@property( atomic, readwrite, assign           ) BOOL                    didFinishLaunching;
 
 - ( IBAction )togglePopover: ( nullable id )sender;
 
@@ -56,6 +58,8 @@ NS_ASSUME_NONNULL_END
 {
     ( void )notification;
     
+    [ AppInstaller installIfNecessary ];
+    
     self.startAtLogin       = [ NSApp isLoginItemEnabled ];
     self.statusItem         = [ [ NSStatusBar systemStatusBar ] statusItemWithLength: NSSquareStatusItemLength ];
     self.statusItem.image   = [ NSImage imageNamed: @"StatusIconTemplate" ];
@@ -64,15 +68,20 @@ NS_ASSUME_NONNULL_END
     self.mainViewController = [ MainViewController new ];
     
     [ self addObserver: self forKeyPath: NSStringFromSelector( @selector( startAtLogin ) ) options: 0 context: NULL ];
+    
+    self.didFinishLaunching = YES;
 }
 
 - ( void )applicationWillTerminate: ( NSNotification * )notification
 {
     ( void )notification;
     
-    [ [ NSNotificationCenter defaultCenter ] removeObserver: self ];
-    [ self removeObserver: self forKeyPath: NSStringFromSelector( @selector( startAtLogin ) ) ];
-    [ self.popoverWindow removeObserver: self forKeyPath: @"visible" ];
+    if( self.didFinishLaunching )
+    {
+        [ [ NSNotificationCenter defaultCenter ] removeObserver: self ];
+        [ self removeObserver: self forKeyPath: NSStringFromSelector( @selector( startAtLogin ) ) ];
+        [ self.popoverWindow removeObserver: self forKeyPath: @"visible" ];
+    }
 }
 
 - ( void )observeValueForKeyPath: ( NSString * )keyPath ofObject: ( id )object change: ( NSDictionary< NSKeyValueChangeKey, id > * )change context: ( void * )context

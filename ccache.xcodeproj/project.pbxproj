@@ -20,6 +20,8 @@
 		05765B101EBB99D300D2DDDE /* ccache.icns in Resources */ = {isa = PBXBuildFile; fileRef = 05765B0F1EBB99D300D2DDDE /* ccache.icns */; };
 		05765B901EBBBE5E00D2DDDE /* NSApplication+LaunchServices.m in Sources */ = {isa = PBXBuildFile; fileRef = 05765B8F1EBBBE5E00D2DDDE /* NSApplication+LaunchServices.m */; };
 		0589AC3E1EBBCCE800AD2294 /* NSView+ccache.m in Sources */ = {isa = PBXBuildFile; fileRef = 0589AC3D1EBBCCE800AD2294 /* NSView+ccache.m */; };
+		059B3B6A1ECE28FF00D5013A /* AppInstaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 059B3B691ECE28FF00D5013A /* AppInstaller.m */; };
+		059B3B7E1ECE2CC500D5013A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 059B3B7D1ECE2CC500D5013A /* Security.framework */; };
 		05A364F01EC23007003A93EF /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05A364EF1EC23007003A93EF /* Cocoa.framework */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +60,9 @@
 		05765B8F1EBBBE5E00D2DDDE /* NSApplication+LaunchServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSApplication+LaunchServices.m"; sourceTree = "<group>"; };
 		0589AC3C1EBBCCE800AD2294 /* NSView+ccache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSView+ccache.h"; sourceTree = "<group>"; };
 		0589AC3D1EBBCCE800AD2294 /* NSView+ccache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSView+ccache.m"; sourceTree = "<group>"; };
+		059B3B681ECE28FF00D5013A /* AppInstaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppInstaller.h; sourceTree = "<group>"; };
+		059B3B691ECE28FF00D5013A /* AppInstaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppInstaller.m; sourceTree = "<group>"; };
+		059B3B7D1ECE2CC500D5013A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		05A364EF1EC23007003A93EF /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		05A364F31EC23072003A93EF /* ccache-config.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "ccache-config.sh"; sourceTree = "<group>"; };
 		05A364F41EC23072003A93EF /* ccache.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = ccache.sh; sourceTree = "<group>"; };
@@ -68,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				059B3B7E1ECE2CC500D5013A /* Security.framework in Frameworks */,
 				05A364F01EC23007003A93EF /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -128,6 +134,8 @@
 			children = (
 				05765A281EBA708600D2DDDE /* AboutWindowController.h */,
 				05765A291EBA708600D2DDDE /* AboutWindowController.m */,
+				059B3B681ECE28FF00D5013A /* AppInstaller.h */,
+				059B3B691ECE28FF00D5013A /* AppInstaller.m */,
 				050B84E21EB9C8120090EA12 /* ApplicationDelegate.h */,
 				050B84E31EB9C8120090EA12 /* ApplicationDelegate.m */,
 				051DC40F1EBA5F1400C00618 /* CCache.h */,
@@ -156,6 +164,7 @@
 		05A364EE1EC23007003A93EF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				059B3B7D1ECE2CC500D5013A /* Security.framework */,
 				05A364EF1EC23007003A93EF /* Cocoa.framework */,
 			);
 			name = Frameworks;
@@ -250,6 +259,7 @@
 				05765A2A1EBA708600D2DDDE /* AboutWindowController.m in Sources */,
 				050B84E41EB9C8120090EA12 /* ApplicationDelegate.m in Sources */,
 				05765B901EBBBE5E00D2DDDE /* NSApplication+LaunchServices.m in Sources */,
+				059B3B6A1ECE28FF00D5013A /* AppInstaller.m in Sources */,
 				05765AB51EBB20B000D2DDDE /* StatisticItem.m in Sources */,
 				051DC4111EBA5F1400C00618 /* CCache.m in Sources */,
 				05765A271EBA706C00D2DDDE /* MainViewController.m in Sources */,
