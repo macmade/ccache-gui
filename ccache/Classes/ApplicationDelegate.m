@@ -214,6 +214,13 @@ NS_ASSUME_NONNULL_END
     NSWindow * window;
     NSUInteger mask;
     
+    if( self.popoverWindow )
+    {
+        [ self.popoverWindow removeObserver: self forKeyPath: @"visible" ];
+        
+        self.popoverWindow = nil;
+    }
+    
     mask = NSWindowStyleMaskTitled | NSWindowStyleMaskClosable | NSWindowStyleMaskMiniaturizable | NSWindowStyleMaskFullSizeContentView;
     
     window                            = [ [ NSWindow alloc ] initWithContentRect: popover.contentViewController.view.bounds styleMask: mask backing: NSBackingStoreBuffered defer: NO ];
