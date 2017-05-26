@@ -130,6 +130,13 @@ NS_ASSUME_NONNULL_END
 
 - ( IBAction )openPopover: ( nullable id )sender
 {
+    if( self.popoverWindow != nil && self.popoverWindow.contentView != self.mainViewController.view )
+    {
+        [ self.popoverWindow removeObserver: self forKeyPath: @"visible" ];
+        
+        self.popoverWindow = nil;
+    }
+    
     if( self.popoverWindow != nil )
     {
         [ NSApp activateIgnoringOtherApps: YES ];
@@ -162,6 +169,13 @@ NS_ASSUME_NONNULL_END
         view = [ self.statusItem performSelector: @selector( button ) ];
     }
     
+    if( self.popoverWindow != nil && self.popoverWindow.contentView != self.mainViewController.view )
+    {
+        [ self.popoverWindow removeObserver: self forKeyPath: @"visible" ];
+        
+        self.popoverWindow = nil;
+    }
+    
     if( self.popoverWindow != nil )
     {
         [ NSApp activateIgnoringOtherApps: YES ];
@@ -179,20 +193,9 @@ NS_ASSUME_NONNULL_END
             self.popover.behavior               = NSPopoverBehaviorApplicationDefined;
             self.popover.contentViewController  = self.mainViewController;
             self.popover.delegate               = self;
-            
-            [ [ NSNotificationCenter defaultCenter ] addObserver: self selector: @selector( popoverNotification: ) name: NSPopoverWillShowNotification  object: self.popover ];
-            [ [ NSNotificationCenter defaultCenter ] addObserver: self selector: @selector( popoverNotification: ) name: NSPopoverWillCloseNotification object: self.popover ];
         }
         
         [ self.popover showRelativeToRect: self.statusItem.view.frame ofView: view preferredEdge: NSRectEdgeMinY ];
-    }
-}
-
-- ( void )popoverNotification: ( NSNotification * )notification
-{
-    if( [ notification.name isEqualToString: NSPopoverWillShowNotification ] || [ notification.name isEqualToString: NSPopoverWillCloseNotification ] )
-    {
-        self.popoverIsOpen = !( self.popoverIsOpen );
     }
 }
 
@@ -225,9 +228,7 @@ NS_ASSUME_NONNULL_END
     
     if( self.popoverWindow )
     {
-        [ self.popoverWindow removeObserver: self forKeyPath: @"visible" ];
-        
-        self.popoverWindow = nil;
+        return self.popoverWindow;
     }
     
     mask = NSWindowStyleMaskTitled | NSWindowStyleMaskClosable | NSWindowStyleMaskMiniaturizable | NSWindowStyleMaskFullSizeContentView;
@@ -263,6 +264,13 @@ NS_ASSUME_NONNULL_END
     ];
 }
 
+- ( void )popoverDidShow: ( NSNotification * )notification
+{
+    ( void )notification;
+    
+    self.popoverIsOpen = YES;
+}
+
 - ( void )popoverDidClose: ( NSNotification * )notification
 {
     ( void )notification;
@@ -272,6 +280,7 @@ NS_ASSUME_NONNULL_END
         [ NSEvent removeMonitor: ( id )( self.popoverTranscientEvent ) ];
     }
     
+    self.popoverIsOpen          = NO;
     self.popover                = nil;
     self.popoverTranscientEvent = nil;
 }
