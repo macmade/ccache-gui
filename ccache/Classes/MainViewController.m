@@ -32,6 +32,7 @@
 #import "CCache.h"
 #import "StatisticItem.h"
 #import "NSView+ccache.h"
+#import <GitHubUpdates/GitHubUpdates.h>
 
 static NSDictionary< NSString *, NSString * > * tooltips = nil;
 
@@ -48,6 +49,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property( atomic, readwrite, strong, nullable )          NSArray< StatisticItem * > * statistics;
 @property( atomic, readonly,          nullable )          NSString                   * xcodeDerivedDataPath;
 @property( atomic, readonly,          nullable )          NSURL                      * xcodeDerivedDataURL;
+@property( atomic, readwrite, strong, nullable )          GitHubUpdater              * updater;
 @property( atomic, readwrite, strong, nullable ) IBOutlet NSArrayController          * statisticsController;
 @property( atomic, readwrite, strong, nullable ) IBOutlet NSTableView                * tableView;
 
@@ -59,6 +61,7 @@ NS_ASSUME_NONNULL_BEGIN
 - ( IBAction )install:                ( nullable id )sender;
 - ( IBAction )clearXcodeDerivedData:  ( nullable id )sender;
 - ( IBAction )revealXcodeDerivedData: ( nullable id )sender;
+- ( IBAction )checkForUpdates:        ( nullable id )sender;
 
 - ( void )updateStatistics;
 - ( void )adjustTableViewHeight;
@@ -129,11 +132,16 @@ NS_ASSUME_NONNULL_END
         return;
     }
     
+    self.updater                              = [ GitHubUpdater new ];
+    self.updater.user                         = @"macmade";
+    self.updater.repository                   = @"ccache-gui";
     self.awake                                = YES;
     self.tableViewHeight                      = [ self.tableView.enclosingScrollView constantForAttribute: NSLayoutAttributeHeight ];
     self.statisticsController.sortDescriptors = @[ [ NSSortDescriptor sortDescriptorWithKey: NSStringFromSelector( @selector( label ) ) ascending: YES selector: @selector( localizedCaseInsensitiveCompare: ) ] ];
     
     [ self updateStatistics ];
+    [ self.updater checkForUpdatesInBackground ];
+    [ NSTimer scheduledTimerWithTimeInterval: 3600 target: self.updater selector: @selector( checkForUpdatesInBackground ) userInfo: nil repeats: YES ];
 }
 
 - ( void )viewDidAppear
@@ -397,6 +405,12 @@ NS_ASSUME_NONNULL_END
     
     [ ( ApplicationDelegate * )( NSApp.delegate ) closePopover: sender ];
     [ [ NSWorkspace sharedWorkspace ] selectFile: nil inFileViewerRootedAtPath: path ];
+}
+
+- ( IBAction )checkForUpdates: ( nullable id )sender
+{
+    [ ( ApplicationDelegate * )( NSApp.delegate ) closePopover: sender ];
+    [ self.updater checkForUpdates: sender ];
 }
 
 - ( void )alertForMissingXcodeDerivedDataDirectory

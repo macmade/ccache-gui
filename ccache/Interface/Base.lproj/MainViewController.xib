@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13122.17" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12118"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13122.17"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="system font weights other than Regular or Bold" minToolsVersion="7.0"/>
     </dependencies>
@@ -28,8 +28,8 @@
                     </constraints>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="ccache" id="4P7-p8-WUD"/>
                 </imageView>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m3E-bf-ytC">
-                    <rect key="frame" x="74" y="338" width="98" height="36"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="m3E-bf-ytC">
+                    <rect key="frame" x="74" y="338" width="95" height="36"/>
                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="ccache" id="rBY-SQ-ufG">
                         <font key="font" metaFont="systemThin" size="30"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -72,8 +72,8 @@
                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="FW4-mt-4Q1">
                     <rect key="frame" x="20" y="0.0" width="310" height="315"/>
                     <subviews>
-                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FcC-HG-zT4">
-                            <rect key="frame" x="60" y="267" width="191" height="24"/>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FcC-HG-zT4">
+                            <rect key="frame" x="63" y="267" width="185" height="24"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="ccache is not installed" id="fmb-hu-j6G">
                                 <font key="font" metaFont="systemThin" size="20"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -142,7 +142,7 @@
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
                                 <color key="gridColor" white="0.80000000000000004" alpha="0.20000000000000001" colorSpace="deviceWhite"/>
                                 <tableColumns>
-                                    <tableColumn width="200" minWidth="40" maxWidth="1000" id="GE5-CT-tVY">
+                                    <tableColumn identifier="" width="200" minWidth="40" maxWidth="1000" id="GE5-CT-tVY">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -160,7 +160,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="200" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nds-jL-6rj">
+                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Nds-jL-6rj">
                                                         <rect key="frame" x="-2" y="2" width="204" height="14"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" sendsActionOnEndEditing="YES" title="Table View Cell" id="JWu-fj-CB2">
                                                             <font key="font" metaFont="systemThin" size="11"/>
@@ -184,7 +184,7 @@
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn width="110" minWidth="40" maxWidth="1000" id="Y0A-Fr-vEg">
+                                    <tableColumn identifier="" width="110" minWidth="40" maxWidth="1000" id="Y0A-Fr-vEg">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -202,7 +202,7 @@
                                                 <rect key="frame" x="200" y="0.0" width="110" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zs4-x1-aEw">
+                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="zs4-x1-aEw">
                                                         <rect key="frame" x="-2" y="2" width="114" height="14"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingMiddle" selectable="YES" sendsActionOnEndEditing="YES" alignment="right" title="Table View Cell" id="Hgg-ZE-NcT">
                                                             <font key="font" metaFont="systemThin" size="11"/>
@@ -396,6 +396,17 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="openManual:" target="-2" id="PgU-uS-cvr"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Check for Updates..." id="NN2-Tp-mC7">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="checkForUpdates:" target="-2" id="wPU-nD-wi6"/>
+                        <binding destination="-2" name="enabled" keyPath="updater.checkingForUpdates" id="tvG-Sp-K6b">
+                            <dictionary key="options">
+                                <string key="NSValueTransformerName">NSNegateBoolean</string>
+                            </dictionary>
+                        </binding>
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="USz-z9-kJK"/>

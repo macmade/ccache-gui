@@ -12,6 +12,8 @@
 		050B84FA1EB9C90C0090EA12 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 050B84F81EB9C90C0090EA12 /* MainMenu.xib */; };
 		050B85121EB9CEAD0090EA12 /* StatusIconTemplate.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 050B85111EB9CEAD0090EA12 /* StatusIconTemplate.pdf */; };
 		051DC4111EBA5F1400C00618 /* CCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 051DC4101EBA5F1400C00618 /* CCache.m */; };
+		0555EBBB1EF3EE410016167F /* GitHubUpdates.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0555EBB61EF3EE340016167F /* GitHubUpdates.framework */; };
+		0555EBBC1EF3EE4E0016167F /* GitHubUpdates.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0555EBB61EF3EE340016167F /* GitHubUpdates.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		05765A271EBA706C00D2DDDE /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05765A261EBA706C00D2DDDE /* MainViewController.m */; };
 		05765A2A1EBA708600D2DDDE /* AboutWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05765A291EBA708600D2DDDE /* AboutWindowController.m */; };
 		05765A9F1EBA83C500D2DDDE /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05765A9D1EBA83C500D2DDDE /* MainViewController.xib */; };
@@ -25,13 +27,38 @@
 		05A364F01EC23007003A93EF /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05A364EF1EC23007003A93EF /* Cocoa.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		0555EBB51EF3EE340016167F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0555EBB01EF3EE340016167F /* GitHubUpdates.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 05F82B251EF32EA700EC8A93;
+			remoteInfo = GitHubUpdates;
+		};
+		0555EBB71EF3EE340016167F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0555EBB01EF3EE340016167F /* GitHubUpdates.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0555EBA01EF3DDA10016167F;
+			remoteInfo = Relauncher;
+		};
+		0555EBB91EF3EE3D0016167F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0555EBB01EF3EE340016167F /* GitHubUpdates.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 05F82B241EF32EA700EC8A93;
+			remoteInfo = GitHubUpdates;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		05765B311EBBA6DF00D2DDDE /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = Contents/Library/LoginItems;
-			dstSubfolderSpec = 1;
+			dstPath = "";
+			dstSubfolderSpec = 10;
 			files = (
+				0555EBBC1EF3EE4E0016167F /* GitHubUpdates.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -47,6 +74,7 @@
 		050B85111EB9CEAD0090EA12 /* StatusIconTemplate.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = StatusIconTemplate.pdf; sourceTree = "<group>"; };
 		051DC40F1EBA5F1400C00618 /* CCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCache.h; sourceTree = "<group>"; };
 		051DC4101EBA5F1400C00618 /* CCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCache.m; sourceTree = "<group>"; };
+		0555EBB01EF3EE340016167F /* GitHubUpdates.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GitHubUpdates.xcodeproj; path = Submodules/GitHubUpdates/GitHubUpdates.xcodeproj; sourceTree = "<group>"; };
 		05765A251EBA706C00D2DDDE /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		05765A261EBA706C00D2DDDE /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		05765A281EBA708600D2DDDE /* AboutWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutWindowController.h; sourceTree = "<group>"; };
@@ -73,6 +101,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0555EBBB1EF3EE410016167F /* GitHubUpdates.framework in Frameworks */,
 				059B3B7E1ECE2CC500D5013A /* Security.framework in Frameworks */,
 				05A364F01EC23007003A93EF /* Cocoa.framework in Frameworks */,
 			);
@@ -84,6 +113,7 @@
 		050B84C01EB93FF90090EA12 = {
 			isa = PBXGroup;
 			children = (
+				0555EBB01EF3EE340016167F /* GitHubUpdates.xcodeproj */,
 				050B84CB1EB93FF90090EA12 /* ccache */,
 				05A364EE1EC23007003A93EF /* Frameworks */,
 				050B84CA1EB93FF90090EA12 /* Products */,
@@ -161,6 +191,15 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
+		0555EBB11EF3EE340016167F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0555EBB61EF3EE340016167F /* GitHubUpdates.framework */,
+				0555EBB81EF3EE340016167F /* Relauncher */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		05A364EE1EC23007003A93EF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -194,6 +233,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				0555EBBA1EF3EE3D0016167F /* PBXTargetDependency */,
 			);
 			name = ccache;
 			productName = ccache;
@@ -227,12 +267,35 @@
 			mainGroup = 050B84C01EB93FF90090EA12;
 			productRefGroup = 050B84CA1EB93FF90090EA12 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 0555EBB11EF3EE340016167F /* Products */;
+					ProjectRef = 0555EBB01EF3EE340016167F /* GitHubUpdates.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				050B84C81EB93FF90090EA12 /* ccache */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		0555EBB61EF3EE340016167F /* GitHubUpdates.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = GitHubUpdates.framework;
+			remoteRef = 0555EBB51EF3EE340016167F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0555EBB81EF3EE340016167F /* Relauncher */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = Relauncher;
+			remoteRef = 0555EBB71EF3EE340016167F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		050B84C71EB93FF90090EA12 /* Resources */ = {
@@ -267,6 +330,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0555EBBA1EF3EE3D0016167F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = GitHubUpdates;
+			targetProxy = 0555EBB91EF3EE3D0016167F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		050B84F81EB9C90C0090EA12 /* MainMenu.xib */ = {
