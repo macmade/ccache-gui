@@ -37,9 +37,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ApplicationDelegate() < NSPopoverDelegate, NSWindowDelegate >
 
-@property( atomic, readwrite, strong           ) NSStatusItem          * statusItem;
-@property( atomic, readwrite, strong           ) AboutWindowController * aboutWindowController;
-@property( atomic, readwrite, strong           ) MainViewController    * mainViewController;
+@property( atomic, readwrite, strong, nullable ) NSStatusItem          * statusItem;
+@property( atomic, readwrite, strong, nullable ) AboutWindowController * aboutWindowController;
+@property( atomic, readwrite, strong, nullable ) MainViewController    * mainViewController;
 @property( atomic, readwrite, strong, nullable ) NSWindow              * popoverWindow;
 @property( atomic, readwrite, strong, nullable ) NSPopover             * popover;
 @property( atomic, readwrite, strong, nullable ) id                      popoverTranscientEvent;

@@ -39,6 +39,18 @@ NS_ASSUME_NONNULL_END
 
 @implementation StatisticItem
 
+- ( instancetype )init
+{
+    if( ( self = [ super init ] ) )
+    {
+        self.label   = @"";
+        self.text    = @"";
+        self.tooltip = @"";
+    }
+    
+    return self;
+}
+
 - ( BOOL )isEqualToStatisticItem: ( StatisticItem * )item
 {
     if( [ item isKindOfClass: [ StatisticItem class ] ] == NO )

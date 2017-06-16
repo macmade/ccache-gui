@@ -33,9 +33,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface AboutWindowController()
 
-@property( atomic, readwrite, strong ) NSString * name;
-@property( atomic, readwrite, strong ) NSString * version;
-@property( atomic, readwrite, strong ) NSString * copyright;
+@property( atomic, readwrite, strong, nullable ) NSString * name;
+@property( atomic, readwrite, strong, nullable ) NSString * version;
+@property( atomic, readwrite, strong, nullable ) NSString * copyright;
 
 @end
 

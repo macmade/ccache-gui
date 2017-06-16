@@ -263,7 +263,7 @@ NS_ASSUME_NONNULL_END
                 item         = [ StatisticItem new ];
                 item.label   = [ parts.firstObject stringByTrimmingCharactersInSet: [ NSCharacterSet whitespaceCharacterSet ] ].capitalizedString;
                 item.text    = [ parts.lastObject  stringByTrimmingCharactersInSet: [ NSCharacterSet whitespaceCharacterSet ] ];
-                item.tooltip = tooltips[ item.label.lowercaseString ];
+                item.tooltip = ( tooltips[ item.label.lowercaseString ] ) ? tooltips[ item.label.lowercaseString ] : @"";
                 
                 if( item.label.length && item.text.length )
                 {
