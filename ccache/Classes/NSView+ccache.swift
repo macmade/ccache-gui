@@ -1,7 +1,7 @@
 /*******************************************************************************
  * The MIT License (MIT)
  * 
- * Copyright (c) 2017 Jean-David Gadina - www.xs-labs.com / www.imazing.com
+ * Copyright (c) 2017 Jean-David Gadina - www.xs-labs.com
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,22 +23,31 @@
  ******************************************************************************/
 
 /*!
- * @header      StatisticItem.h
+ * @file        NSView+ccache.swift
  * @copyright   (c) 2017, Jean-David Gadina - www.xs-labs.com / www.imazing.com
  */
 
-#import <Foundation/Foundation.h>
+import Cocoa
 
-NS_ASSUME_NONNULL_BEGIN
-
-@interface StatisticItem: NSObject
-
-@property( atomic, readwrite, strong ) NSString * label;
-@property( atomic, readwrite, strong ) NSString * text;
-@property( atomic, readwrite, strong ) NSString * tooltip;
-
-- ( BOOL )isEqualToStatisticItem: ( StatisticItem * )item;
-
-@end
-
-NS_ASSUME_NONNULL_END
+extension NSView
+{
+    public func constraintForAttribute( _ attribute: NSLayoutConstraint.Attribute ) -> NSLayoutConstraint?
+    {
+        let constraints = self.constraints.filter()
+        {
+            $0.firstAttribute == attribute
+        }
+        
+        return constraints.first
+    }
+    
+    public func constantForAttribute( _ attribute: NSLayoutConstraint.Attribute ) -> CGFloat
+    {
+        return self.constraintForAttribute( attribute )?.constant ?? 0.0
+    }
+    
+    public func setConstant( _ constant: CGFloat, forAttribute: NSLayoutConstraint.Attribute )
+    {
+        constraintForAttribute( forAttribute )?.constant = constant
+    }
+}

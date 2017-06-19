@@ -29,7 +29,7 @@
  *              https://github.com/potionfactory/LetsMove
  */
 
-#import <Cocoa/Cocoa.h>
+@import Cocoa;
 
 NS_ASSUME_NONNULL_BEGIN
 

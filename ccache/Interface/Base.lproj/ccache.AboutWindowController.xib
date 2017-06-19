@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13122.17" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12118"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13122.17"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="system font weights other than Regular or Bold" minToolsVersion="7.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="AboutWindowController">
+        <customObject id="-2" userLabel="File's Owner" customClass="AboutWindowController" customModule="ccache" customModuleProvider="target">
             <connections>
                 <outlet property="window" destination="QvC-M9-y7g" id="3uC-xA-AhB"/>
             </connections>
@@ -21,7 +21,7 @@
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1178"/>
             <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="395" height="296"/>
-                <autoresizingMask key="autoresizingMask"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <visualEffectView appearanceType="vibrantDark" blendingMode="behindWindow" material="appearanceBased" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="2na-Z2-u9Y">
                         <rect key="frame" x="0.0" y="0.0" width="395" height="296"/>
@@ -64,7 +64,7 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                                 <connections>
-                                    <binding destination="-2" name="value" keyPath="name" id="OKL-6y-FGO"/>
+                                    <binding destination="-2" name="value" keyPath="name" id="hQK-EN-Mf4"/>
                                 </connections>
                             </textField>
                         </subviews>
@@ -93,6 +93,7 @@
             </view>
             <point key="canvasLocation" x="-53.5" y="-162"/>
         </window>
+        <userDefaultsController representsSharedInstance="YES" id="Pzb-5n-vt2"/>
     </objects>
     <resources>
         <image name="NSApplicationIcon" width="128" height="128"/>

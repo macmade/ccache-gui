@@ -7,24 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		050B84D11EB93FF90090EA12 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 050B84D01EB93FF90090EA12 /* main.m */; };
-		050B84E41EB9C8120090EA12 /* ApplicationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 050B84E31EB9C8120090EA12 /* ApplicationDelegate.m */; };
 		050B84FA1EB9C90C0090EA12 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 050B84F81EB9C90C0090EA12 /* MainMenu.xib */; };
 		050B85121EB9CEAD0090EA12 /* StatusIconTemplate.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 050B85111EB9CEAD0090EA12 /* StatusIconTemplate.pdf */; };
-		051DC4111EBA5F1400C00618 /* CCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 051DC4101EBA5F1400C00618 /* CCache.m */; };
+		052F5F4F1EF6EC2B0036F37E /* StatisticItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052F5F4E1EF6EC2B0036F37E /* StatisticItem.swift */; };
+		052F5F7D1EF6F5240036F37E /* NSView+ccache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052F5F7C1EF6F5240036F37E /* NSView+ccache.swift */; };
+		052F5F7F1EF6FA0E0036F37E /* CCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052F5F7E1EF6FA0E0036F37E /* CCache.swift */; };
+		053E7BE71EF6DE83004A24C3 /* AboutWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053E7BE61EF6DE83004A24C3 /* AboutWindowController.swift */; };
 		0555EBBB1EF3EE410016167F /* GitHubUpdates.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0555EBB61EF3EE340016167F /* GitHubUpdates.framework */; };
 		0555EBBC1EF3EE4E0016167F /* GitHubUpdates.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0555EBB61EF3EE340016167F /* GitHubUpdates.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		05765A271EBA706C00D2DDDE /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05765A261EBA706C00D2DDDE /* MainViewController.m */; };
-		05765A2A1EBA708600D2DDDE /* AboutWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05765A291EBA708600D2DDDE /* AboutWindowController.m */; };
-		05765A9F1EBA83C500D2DDDE /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05765A9D1EBA83C500D2DDDE /* MainViewController.xib */; };
-		05765AB51EBB20B000D2DDDE /* StatisticItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 05765AB41EBB20B000D2DDDE /* StatisticItem.m */; };
-		05765AB81EBB261D00D2DDDE /* AboutWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05765AB61EBB261D00D2DDDE /* AboutWindowController.xib */; };
+		05765A9F1EBA83C500D2DDDE /* ccache.MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05765A9D1EBA83C500D2DDDE /* ccache.MainViewController.xib */; };
+		05765AB81EBB261D00D2DDDE /* ccache.AboutWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05765AB61EBB261D00D2DDDE /* ccache.AboutWindowController.xib */; };
 		05765B101EBB99D300D2DDDE /* ccache.icns in Resources */ = {isa = PBXBuildFile; fileRef = 05765B0F1EBB99D300D2DDDE /* ccache.icns */; };
-		05765B901EBBBE5E00D2DDDE /* NSApplication+LaunchServices.m in Sources */ = {isa = PBXBuildFile; fileRef = 05765B8F1EBBBE5E00D2DDDE /* NSApplication+LaunchServices.m */; };
-		0589AC3E1EBBCCE800AD2294 /* NSView+ccache.m in Sources */ = {isa = PBXBuildFile; fileRef = 0589AC3D1EBBCCE800AD2294 /* NSView+ccache.m */; };
 		059B3B6A1ECE28FF00D5013A /* AppInstaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 059B3B691ECE28FF00D5013A /* AppInstaller.m */; };
 		059B3B7E1ECE2CC500D5013A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 059B3B7D1ECE2CC500D5013A /* Security.framework */; };
 		05A364F01EC23007003A93EF /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05A364EF1EC23007003A93EF /* Cocoa.framework */; };
+		05B9275A1EF84866004B9D71 /* ApplicationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B927591EF84865004B9D71 /* ApplicationDelegate.swift */; };
+		05B9277B1EF85CFC004B9D71 /* NSApplication+LaunchServices.m in Sources */ = {isa = PBXBuildFile; fileRef = 05765B8F1EBBBE5E00D2DDDE /* NSApplication+LaunchServices.m */; };
+		05D7822A1EF70D000076B14D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D782291EF70D000076B14D /* MainViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,34 +65,28 @@
 
 /* Begin PBXFileReference section */
 		050B84C91EB93FF90090EA12 /* ccache.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ccache.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		050B84D01EB93FF90090EA12 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		050B84DA1EB93FF90090EA12 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		050B84E21EB9C8120090EA12 /* ApplicationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplicationDelegate.h; sourceTree = "<group>"; };
-		050B84E31EB9C8120090EA12 /* ApplicationDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplicationDelegate.m; sourceTree = "<group>"; };
 		050B84F91EB9C90C0090EA12 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		050B85111EB9CEAD0090EA12 /* StatusIconTemplate.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = StatusIconTemplate.pdf; sourceTree = "<group>"; };
-		051DC40F1EBA5F1400C00618 /* CCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCache.h; sourceTree = "<group>"; };
-		051DC4101EBA5F1400C00618 /* CCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCache.m; sourceTree = "<group>"; };
+		052F5F4E1EF6EC2B0036F37E /* StatisticItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticItem.swift; sourceTree = "<group>"; };
+		052F5F7C1EF6F5240036F37E /* NSView+ccache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSView+ccache.swift"; sourceTree = "<group>"; };
+		052F5F7E1EF6FA0E0036F37E /* CCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCache.swift; sourceTree = "<group>"; };
+		053E7BE51EF6DE83004A24C3 /* ccache-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ccache-Bridging-Header.h"; sourceTree = "<group>"; };
+		053E7BE61EF6DE83004A24C3 /* AboutWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutWindowController.swift; sourceTree = "<group>"; };
 		0555EBB01EF3EE340016167F /* GitHubUpdates.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GitHubUpdates.xcodeproj; path = Submodules/GitHubUpdates/GitHubUpdates.xcodeproj; sourceTree = "<group>"; };
-		05765A251EBA706C00D2DDDE /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
-		05765A261EBA706C00D2DDDE /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
-		05765A281EBA708600D2DDDE /* AboutWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutWindowController.h; sourceTree = "<group>"; };
-		05765A291EBA708600D2DDDE /* AboutWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutWindowController.m; sourceTree = "<group>"; };
-		05765A9E1EBA83C500D2DDDE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainViewController.xib; sourceTree = "<group>"; };
-		05765AB31EBB20B000D2DDDE /* StatisticItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatisticItem.h; sourceTree = "<group>"; };
-		05765AB41EBB20B000D2DDDE /* StatisticItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatisticItem.m; sourceTree = "<group>"; };
-		05765AB71EBB261D00D2DDDE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AboutWindowController.xib; sourceTree = "<group>"; };
+		05765A9E1EBA83C500D2DDDE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ccache.MainViewController.xib; sourceTree = "<group>"; };
+		05765AB71EBB261D00D2DDDE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ccache.AboutWindowController.xib; sourceTree = "<group>"; };
 		05765B0F1EBB99D300D2DDDE /* ccache.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = ccache.icns; sourceTree = "<group>"; };
 		05765B8E1EBBBE5E00D2DDDE /* NSApplication+LaunchServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSApplication+LaunchServices.h"; sourceTree = "<group>"; };
 		05765B8F1EBBBE5E00D2DDDE /* NSApplication+LaunchServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSApplication+LaunchServices.m"; sourceTree = "<group>"; };
-		0589AC3C1EBBCCE800AD2294 /* NSView+ccache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSView+ccache.h"; sourceTree = "<group>"; };
-		0589AC3D1EBBCCE800AD2294 /* NSView+ccache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSView+ccache.m"; sourceTree = "<group>"; };
 		059B3B681ECE28FF00D5013A /* AppInstaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppInstaller.h; sourceTree = "<group>"; };
 		059B3B691ECE28FF00D5013A /* AppInstaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppInstaller.m; sourceTree = "<group>"; };
 		059B3B7D1ECE2CC500D5013A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		05A364EF1EC23007003A93EF /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		05A364F31EC23072003A93EF /* ccache-config.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "ccache-config.sh"; sourceTree = "<group>"; };
 		05A364F41EC23072003A93EF /* ccache.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = ccache.sh; sourceTree = "<group>"; };
+		05B927591EF84865004B9D71 /* ApplicationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationDelegate.swift; sourceTree = "<group>"; };
+		05D782291EF70D000076B14D /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,7 +136,6 @@
 			isa = PBXGroup;
 			children = (
 				050B84DA1EB93FF90090EA12 /* Info.plist */,
-				050B84D01EB93FF90090EA12 /* main.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -151,10 +143,10 @@
 		050B84E01EB9C8070090EA12 /* Interface */ = {
 			isa = PBXGroup;
 			children = (
-				05765AB61EBB261D00D2DDDE /* AboutWindowController.xib */,
+				05765AB61EBB261D00D2DDDE /* ccache.AboutWindowController.xib */,
 				050B84FB1EB9CCD60090EA12 /* Images */,
 				050B84F81EB9C90C0090EA12 /* MainMenu.xib */,
-				05765A9D1EBA83C500D2DDDE /* MainViewController.xib */,
+				05765A9D1EBA83C500D2DDDE /* ccache.MainViewController.xib */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -162,22 +154,17 @@
 		050B84E11EB9C8120090EA12 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				05765A281EBA708600D2DDDE /* AboutWindowController.h */,
-				05765A291EBA708600D2DDDE /* AboutWindowController.m */,
+				053E7BE61EF6DE83004A24C3 /* AboutWindowController.swift */,
 				059B3B681ECE28FF00D5013A /* AppInstaller.h */,
 				059B3B691ECE28FF00D5013A /* AppInstaller.m */,
-				050B84E21EB9C8120090EA12 /* ApplicationDelegate.h */,
-				050B84E31EB9C8120090EA12 /* ApplicationDelegate.m */,
-				051DC40F1EBA5F1400C00618 /* CCache.h */,
-				051DC4101EBA5F1400C00618 /* CCache.m */,
-				05765A251EBA706C00D2DDDE /* MainViewController.h */,
-				05765A261EBA706C00D2DDDE /* MainViewController.m */,
+				05B927591EF84865004B9D71 /* ApplicationDelegate.swift */,
+				052F5F7E1EF6FA0E0036F37E /* CCache.swift */,
+				05D782291EF70D000076B14D /* MainViewController.swift */,
 				05765B8E1EBBBE5E00D2DDDE /* NSApplication+LaunchServices.h */,
 				05765B8F1EBBBE5E00D2DDDE /* NSApplication+LaunchServices.m */,
-				0589AC3C1EBBCCE800AD2294 /* NSView+ccache.h */,
-				0589AC3D1EBBCCE800AD2294 /* NSView+ccache.m */,
-				05765AB31EBB20B000D2DDDE /* StatisticItem.h */,
-				05765AB41EBB20B000D2DDDE /* StatisticItem.m */,
+				052F5F7C1EF6F5240036F37E /* NSView+ccache.swift */,
+				052F5F4E1EF6EC2B0036F37E /* StatisticItem.swift */,
+				053E7BE51EF6DE83004A24C3 /* ccache-Bridging-Header.h */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -253,6 +240,7 @@
 					050B84C81EB93FF90090EA12 = {
 						CreatedOnToolsVersion = 8.3.1;
 						DevelopmentTeam = 326Y53CJMD;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Manual;
 					};
 				};
@@ -304,9 +292,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				050B85121EB9CEAD0090EA12 /* StatusIconTemplate.pdf in Resources */,
-				05765AB81EBB261D00D2DDDE /* AboutWindowController.xib in Resources */,
+				05765AB81EBB261D00D2DDDE /* ccache.AboutWindowController.xib in Resources */,
 				05765B101EBB99D300D2DDDE /* ccache.icns in Resources */,
-				05765A9F1EBA83C500D2DDDE /* MainViewController.xib in Resources */,
+				05765A9F1EBA83C500D2DDDE /* ccache.MainViewController.xib in Resources */,
 				050B84FA1EB9C90C0090EA12 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -334,15 +322,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0589AC3E1EBBCCE800AD2294 /* NSView+ccache.m in Sources */,
-				050B84D11EB93FF90090EA12 /* main.m in Sources */,
-				05765A2A1EBA708600D2DDDE /* AboutWindowController.m in Sources */,
-				050B84E41EB9C8120090EA12 /* ApplicationDelegate.m in Sources */,
-				05765B901EBBBE5E00D2DDDE /* NSApplication+LaunchServices.m in Sources */,
+				05B9277B1EF85CFC004B9D71 /* NSApplication+LaunchServices.m in Sources */,
+				053E7BE71EF6DE83004A24C3 /* AboutWindowController.swift in Sources */,
+				052F5F4F1EF6EC2B0036F37E /* StatisticItem.swift in Sources */,
 				059B3B6A1ECE28FF00D5013A /* AppInstaller.m in Sources */,
-				05765AB51EBB20B000D2DDDE /* StatisticItem.m in Sources */,
-				051DC4111EBA5F1400C00618 /* CCache.m in Sources */,
-				05765A271EBA706C00D2DDDE /* MainViewController.m in Sources */,
+				052F5F7F1EF6FA0E0036F37E /* CCache.swift in Sources */,
+				05B9275A1EF84866004B9D71 /* ApplicationDelegate.swift in Sources */,
+				052F5F7D1EF6F5240036F37E /* NSView+ccache.swift in Sources */,
+				05D7822A1EF70D000076B14D /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -365,20 +352,20 @@
 			name = MainMenu.xib;
 			sourceTree = "<group>";
 		};
-		05765A9D1EBA83C500D2DDDE /* MainViewController.xib */ = {
+		05765A9D1EBA83C500D2DDDE /* ccache.MainViewController.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				05765A9E1EBA83C500D2DDDE /* Base */,
 			);
-			name = MainViewController.xib;
+			name = ccache.MainViewController.xib;
 			sourceTree = "<group>";
 		};
-		05765AB61EBB261D00D2DDDE /* AboutWindowController.xib */ = {
+		05765AB61EBB261D00D2DDDE /* ccache.AboutWindowController.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				05765AB71EBB261D00D2DDDE /* Base */,
 			);
-			name = AboutWindowController.xib;
+			name = ccache.AboutWindowController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -505,6 +492,12 @@
 				ONLY_ACTIVE_ARCH = YES;
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = macosx;
+				SWIFT_DISABLE_SAFETY_CHECKS = NO;
+				SWIFT_ENFORCE_EXCLUSIVE_ACCESS = full;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_SUPPRESS_WARNINGS = NO;
+				SWIFT_TREAT_WARNINGS_AS_ERRORS = YES;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -622,12 +615,19 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = macosx;
+				SWIFT_DISABLE_SAFETY_CHECKS = NO;
+				SWIFT_ENFORCE_EXCLUSIVE_ACCESS = full;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_SUPPRESS_WARNINGS = NO;
+				SWIFT_TREAT_WARNINGS_AS_ERRORS = YES;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
 		050B84DE1EB93FF90090EA12 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
@@ -636,12 +636,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.xs-labs.ccache";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "ccache/Classes/ccache-Bridging-Header.h";
 			};
 			name = Debug;
 		};
 		050B84DF1EB93FF90090EA12 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 326Y53CJMD;
@@ -650,6 +652,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.xs-labs.ccache";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "ccache/Classes/ccache-Bridging-Header.h";
 			};
 			name = Release;
 		};

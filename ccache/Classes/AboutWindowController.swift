@@ -23,33 +23,32 @@
  ******************************************************************************/
 
 /*!
- * @file        NSView+ccache.m
+ * @file        AboutWindowController.swift
  * @copyright   (c) 2017, Jean-David Gadina - www.xs-labs.com / www.imazing.com
  */
 
-#import "NSView+ccache.h"
+import Cocoa
 
-@implementation NSView( ccache )
-
-- ( nullable NSLayoutConstraint * )constraintForAttribute: ( NSLayoutAttribute )attribute
+@objc class AboutWindowController: NSWindowController
 {
-    NSPredicate * predicate;
-    NSArray     * constraints;
+    @objc private dynamic var name:      String?
+    @objc private dynamic var version:   String?
+    @objc private dynamic var copyright: String?
     
-    predicate   = [ NSPredicate predicateWithFormat: @"firstAttribute = %d", attribute ];
-    constraints = [ self.constraints filteredArrayUsingPredicate: predicate ];
+    override var windowNibName: NSNib.Name?
+    {
+        return NSNib.Name( NSStringFromClass( type( of: self ) ) )
+    }
     
-    return constraints.firstObject;
+    override func windowDidLoad()
+    {
+        super.windowDidLoad()
+        
+        self.window?.titlebarAppearsTransparent = true
+        self.window?.titleVisibility            = .hidden
+        
+        self.name      = Bundle.main.object( forInfoDictionaryKey: "CFBundleName"               ) as? String
+        self.version   = Bundle.main.object( forInfoDictionaryKey: "CFBundleShortVersionString" ) as? String
+        self.copyright = Bundle.main.object( forInfoDictionaryKey: "NSHumanReadableCopyright"   ) as? String
+    }
 }
-
-- ( CGFloat )constantForAttribute: ( NSLayoutAttribute )attribute
-{
-    return [ self constraintForAttribute: attribute ].constant;
-}
-
-- ( void )setConstant: ( CGFloat )constant forAttribute: ( NSLayoutAttribute )attribute
-{
-    [ self constraintForAttribute: attribute ].constant = constant;
-}
-
-@end

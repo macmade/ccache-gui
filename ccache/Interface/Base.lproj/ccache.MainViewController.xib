@@ -7,7 +7,7 @@
         <capability name="system font weights other than Regular or Bold" minToolsVersion="7.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="MainViewController">
+        <customObject id="-2" userLabel="File's Owner" customClass="MainViewController" customModule="ccache" customModuleProvider="target">
             <connections>
                 <outlet property="statisticsController" destination="oMp-ru-fmd" id="NNm-AP-EET"/>
                 <outlet property="tableView" destination="p5a-gg-oAZ" id="OHC-gG-Gbt"/>
@@ -106,7 +106,7 @@
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
                             <connections>
-                                <action selector="install:" target="-2" id="eIg-DF-KN3"/>
+                                <action selector="install:" target="-2" id="582-0J-Spw"/>
                             </connections>
                         </button>
                     </subviews>
@@ -281,7 +281,7 @@
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
                             <connections>
-                                <action selector="cleanup:" target="-2" id="msC-Sb-6at"/>
+                                <action selector="cleanup:" target="-2" id="kgA-P2-M89"/>
                                 <binding destination="-2" name="enabled" keyPath="running" id="h98-Oo-1ZE">
                                     <dictionary key="options">
                                         <string key="NSValueTransformerName">NSNegateBoolean</string>
@@ -296,7 +296,7 @@
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
                             <connections>
-                                <action selector="clear:" target="-2" id="9I5-Uz-HUs"/>
+                                <action selector="clear:" target="-2" id="gCl-5k-Rbb"/>
                                 <binding destination="-2" name="enabled" keyPath="running" id="9yV-dR-X5M">
                                     <dictionary key="options">
                                         <string key="NSValueTransformerName">NSNegateBoolean</string>
@@ -311,7 +311,7 @@
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
                             <connections>
-                                <action selector="resetStatistics:" target="-2" id="5UN-A2-k3U"/>
+                                <action selector="resetStatistics:" target="-2" id="M08-NC-Ovg"/>
                                 <binding destination="-2" name="enabled" keyPath="running" id="y5T-qD-ULR">
                                     <dictionary key="options">
                                         <string key="NSValueTransformerName">NSNegateBoolean</string>

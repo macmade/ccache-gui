@@ -1,7 +1,7 @@
 /*******************************************************************************
  * The MIT License (MIT)
  * 
- * Copyright (c) 2017 Jean-David Gadina - www.xs-labs.com / www.imazing.com
+ * Copyright (c) 2017 Jean-David Gadina - www.xs-labs.com
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,16 +23,55 @@
  ******************************************************************************/
 
 /*!
- * @header      MainViewController.h
+ * @file        StatisticItem.swift
  * @copyright   (c) 2017, Jean-David Gadina - www.xs-labs.com / www.imazing.com
  */
 
-#import <Cocoa/Cocoa.h>
+import Foundation
 
-NS_ASSUME_NONNULL_BEGIN
-
-@interface MainViewController: NSViewController
-
-@end
-
-NS_ASSUME_NONNULL_END
+class StatisticItem: NSObject
+{
+    @objc public dynamic var label:   String = ""
+    @objc public dynamic var text:    String = ""
+    @objc public dynamic var tooltip: String = ""
+    
+    static public func ==( o1: StatisticItem, o2: StatisticItem ) -> Bool
+    {
+        if( o1 === o2 )
+        {
+            return true
+        }
+        
+        if( o1.label != o2.label )
+        {
+            return false
+        }
+        
+        if( o1.text != o2.text )
+        {
+            return false
+        }
+        
+        if( o1.tooltip != o2.tooltip )
+        {
+            return false
+        }
+        
+        return true
+    }
+    
+    override func isEqual( _ object: Any? ) -> Bool
+    {
+        if let other = object as? StatisticItem
+        {
+            return self == other
+        }
+        
+        return false
+    }
+    
+    public override var description: String
+    {
+        return super.description + " " + self.label + ": " + self.text 
+    }
+}

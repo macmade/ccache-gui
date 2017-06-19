@@ -23,13 +23,9 @@
  ******************************************************************************/
 
 /*!
- * @file        main.m
+ * @header      ccache-Bridging-Header.h
  * @copyright   (c) 2017, Jean-David Gadina - www.xs-labs.com / www.imazing.com
  */
-
-#import <Cocoa/Cocoa.h>
-
-int main( int argc, const char * argv[] )
-{
-    return NSApplicationMain( argc, argv );
-}
+ 
+#import "AppInstaller.h"
+#import "NSApplication+LaunchServices.h"
