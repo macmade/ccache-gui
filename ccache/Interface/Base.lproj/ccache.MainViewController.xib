@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13122.17" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14313.13.2" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13122.17"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.13.2"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
-        <capability name="system font weights other than Regular or Bold" minToolsVersion="7.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="MainViewController" customModule="ccache" customModuleProvider="target">
@@ -142,7 +141,7 @@
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
                                 <color key="gridColor" white="0.80000000000000004" alpha="0.20000000000000001" colorSpace="deviceWhite"/>
                                 <tableColumns>
-                                    <tableColumn identifier="" width="200" minWidth="40" maxWidth="1000" id="GE5-CT-tVY">
+                                    <tableColumn width="200" minWidth="40" maxWidth="1000" id="GE5-CT-tVY">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -184,7 +183,7 @@
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="" width="110" minWidth="40" maxWidth="1000" id="Y0A-Fr-vEg">
+                                    <tableColumn width="110" minWidth="40" maxWidth="1000" id="Y0A-Fr-vEg">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -240,11 +239,11 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="247" id="kh4-dt-ngW"/>
                     </constraints>
-                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="pno-X6-2rr">
+                    <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="pno-X6-2rr">
                         <rect key="frame" x="0.0" y="231" width="310" height="16"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
-                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="SnW-mM-Hvu">
+                    <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="SnW-mM-Hvu">
                         <rect key="frame" x="224" y="17" width="15" height="102"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
@@ -345,6 +344,7 @@
                 <constraint firstItem="ah2-k5-AKT" firstAttribute="top" secondItem="Oah-dg-WfU" secondAttribute="bottom" constant="8" id="75g-sg-Vio"/>
                 <constraint firstAttribute="trailing" secondItem="ah2-k5-AKT" secondAttribute="trailing" constant="12" id="7Vv-DQ-BFS"/>
                 <constraint firstItem="Xej-fg-s6T" firstAttribute="centerY" secondItem="aDE-dZ-JLa" secondAttribute="centerY" id="A8S-SK-MyU"/>
+                <constraint firstItem="nCT-l4-gVy" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="m3E-bf-ytC" secondAttribute="trailing" constant="8" symbolic="YES" id="FnP-SM-Rw8"/>
                 <constraint firstItem="MUd-0m-Zqh" firstAttribute="top" secondItem="NEd-BB-meu" secondAttribute="bottom" constant="8" id="GsY-BV-gnc"/>
                 <constraint firstItem="Oah-dg-WfU" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="20" id="H5H-fx-tF1"/>
                 <constraint firstAttribute="bottom" secondItem="FW4-mt-4Q1" secondAttribute="bottom" id="He1-K9-1Br"/>
@@ -445,7 +445,7 @@
     </objects>
     <resources>
         <image name="NSActionTemplate" width="14" height="14"/>
-        <image name="NSCaution" width="32" height="32"/>
+        <image name="NSCaution" width="128" height="128"/>
         <image name="ccache" width="512" height="512"/>
     </resources>
 </document>
