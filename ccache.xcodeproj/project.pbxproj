@@ -79,6 +79,7 @@
 		05765B0F1EBB99D300D2DDDE /* ccache.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = ccache.icns; sourceTree = "<group>"; };
 		05765B8E1EBBBE5E00D2DDDE /* NSApplication+LaunchServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSApplication+LaunchServices.h"; sourceTree = "<group>"; };
 		05765B8F1EBBBE5E00D2DDDE /* NSApplication+LaunchServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSApplication+LaunchServices.m"; sourceTree = "<group>"; };
+		0599CFDB21419474009930E6 /* ccache.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ccache.entitlements; sourceTree = "<group>"; };
 		059B3B681ECE28FF00D5013A /* AppInstaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppInstaller.h; sourceTree = "<group>"; };
 		059B3B691ECE28FF00D5013A /* AppInstaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppInstaller.m; sourceTree = "<group>"; };
 		059B3B7D1ECE2CC500D5013A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -177,6 +178,7 @@
 		050B84CF1EB93FF90090EA12 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0599CFDB21419474009930E6 /* ccache.entitlements */,
 				050B84DA1EB93FF90090EA12 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -397,6 +399,11 @@
 						DevelopmentTeam = 326Y53CJMD;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.HardenedRuntime = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -549,6 +556,7 @@
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = ccache/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.xs-labs.ccache";
@@ -565,6 +573,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 326Y53CJMD;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = ccache/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.xs-labs.ccache";
