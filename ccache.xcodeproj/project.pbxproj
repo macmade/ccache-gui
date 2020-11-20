@@ -391,7 +391,7 @@
 		050B84C11EB93FF90090EA12 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1000;
+				LastUpgradeCheck = 1220;
 				ORGANIZATIONNAME = "XS-Labs";
 				TargetAttributes = {
 					050B84C81EB93FF90090EA12 = {
@@ -409,7 +409,7 @@
 			};
 			buildConfigurationList = 050B84C41EB93FF90090EA12 /* Build configuration list for PBXProject "ccache" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,

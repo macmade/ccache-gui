@@ -428,7 +428,14 @@ NS_ASSUME_NONNULL_END
 
 + ( NSString * )appName
 {
-    return [ [ NSBundle mainBundle ] objectForInfoDictionaryKey: @"CFBundleName" ];
+    NSString * name = [ [ NSBundle mainBundle ] objectForInfoDictionaryKey: @"CFBundleName" ];
+    
+    if( name != nil )
+    {
+        return name;
+    }
+    
+    return @"ccache";
 }
 
 @end

@@ -47,6 +47,8 @@ import Foundation
         if( self.aboutWindowController == nil )
         {
             self.aboutWindowController = AboutWindowController()
+            
+            self.aboutWindowController?.window?.layoutIfNeeded()
         }
         
         if( self.aboutWindowController?.window?.isVisible == false )
