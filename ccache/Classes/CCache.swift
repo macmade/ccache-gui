@@ -68,6 +68,20 @@ class CCache: NSObject
                     self.installed = true
                 }
             }
+            
+            if self.installed == false
+            {
+                if FileManager.default.fileExists( atPath: "/opt/local/bin/ccache" )
+                {
+                    self.path      = "/opt/local/bin/ccache"
+                    self.installed = true
+                }
+                else if FileManager.default.fileExists( atPath: "/opt/homebrew/bin/ccache" )
+                {
+                    self.path      = "/opt/homebrew/bin/ccache"
+                    self.installed = true
+                }
+            }
         }
     }
     
