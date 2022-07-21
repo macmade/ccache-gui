@@ -26,33 +26,13 @@ import Foundation
 
 class StatisticItem: NSObject
 {
-    @objc public dynamic var label:   String = ""
-    @objc public dynamic var text:    String = ""
-    @objc public dynamic var tooltip: String = ""
+    @objc public dynamic var label: String
+    @objc public dynamic var text:  String
     
-    static public func ==( o1: StatisticItem, o2: StatisticItem ) -> Bool
+    public init( label: String, text: String, tooltip: String? )
     {
-        if o1 === o2
-        {
-            return true
-        }
-        
-        if o1.label != o2.label
-        {
-            return false
-        }
-        
-        if o1.text != o2.text
-        {
-            return false
-        }
-        
-        if o1.tooltip != o2.tooltip
-        {
-            return false
-        }
-        
-        return true
+        self.label = label.trimmingCharacters( in: CharacterSet.whitespaces ).capitalized
+        self.text  = text.trimmingCharacters(  in: CharacterSet.whitespaces )
     }
     
     override func isEqual( _ object: Any? ) -> Bool
@@ -68,5 +48,15 @@ class StatisticItem: NSObject
     public override var description: String
     {
         "\( super.description ) \( self.label ): \( self.text )"
+    }
+    
+    public static func ==( o1: StatisticItem, o2: StatisticItem ) -> Bool
+    {
+        if o1 === o2
+        {
+            return true
+        }
+        
+        return o1.label == o2.label && o1.text == o2.text
     }
 }

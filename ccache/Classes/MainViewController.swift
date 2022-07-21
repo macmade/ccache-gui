@@ -30,6 +30,7 @@ class MainViewController: NSViewController, NSTableViewDelegate, NSTableViewData
     @objc private dynamic var awake:           Bool              = false
     @objc private dynamic var installed:       Bool              = CCache.sharedInstance.installed
     @objc private dynamic var running:         Bool              = false
+    @objc private dynamic var headerRowHeight: CGFloat           = 25.0
     @objc private dynamic var rowHeight:       CGFloat           = 17.0
     @objc private dynamic var tableViewHeight: CGFloat           = 0.0
     @objc private dynamic var statistics:      [ StatisticItem ] = []
@@ -40,38 +41,6 @@ class MainViewController: NSViewController, NSTableViewDelegate, NSTableViewData
     @IBOutlet @objc private dynamic var statisticsController: NSArrayController?
     @IBOutlet @objc private dynamic var tableView:            NSTableView?
     
-    static private var tooltips: [ String : String ] =
-    [
-        "autoconf compile/link"            : "Uncachable compilation or linking by an autoconf test.",
-        "bad compiler arguments"           : "Malformed compiler argument, e.g. missing a value for an option that requires an argument or failure to read a file specified by an option argument.",
-        "cache file missing"               : "A file was unexpectedly missing from the cache. This only happens in rare situations, e.g. if one ccache instance is about to get a file from the cache while another instance removed the file as part of cache cleanup.",
-        "cache hit (direct)"               : "A result was successfully found using the direct mode.",
-        "cache hit (preprocessed)"         : "A result was successfully found using the preprocessor mode.",
-        "cache miss"                       : "No result was found.",
-        "cache size"                       : "Current size of the cache.",
-        "called for link"                  : "The compiler was called for linking, not compiling.",
-        "called for preprocessing"         : "The compiler was called for preprocessing, not compiling.",
-        "can’t use precompiled header"     : "Preconditions for using precompiled headers were not fulfilled.",
-        "ccache internal error"            : "Unexpected failure, e.g. due to problems reading/writing the cache.",
-        "cleanups performed"               : "Number of cleanups performed, either implicitly due to the cache size limit being reached or due to explicit ccache -c/--cleanup calls.",
-        "compile failed"                   : "The compilation failed. No result stored in the cache.",
-        "compiler check failed"            : "A compiler check program specified by compiler_check (CCACHE_COMPILERCHECK) failed.",
-        "compiler produced empty output"   : "The compiler’s output file (typically an object file) was empty after compilation.",
-        "compiler produced no output"      : "The compiler’s output file (typically an object file) was missing after compilation.",
-        "compiler produced stdout"         : "The compiler wrote data to standard output. This is something that compilers normally never do, so ccache is not designed to store such output in the cache.",
-        "couldn’t find the compiler"       : "The compiler to execute could not be found.",
-        "error hashing extra file"         : "Failure reading a file specified by extra_files_to_hash (CCACHE_EXTRAFILES).",
-        "files in cache"                   : "Current number of files in the cache.",
-        "multiple source files"            : "The compiler was called to compile multiple source files in one go. This is not supported by ccache.",
-        "no input file"                    : "No input file was specified to the compiler.",
-        "output to a non-regular file"     : "The output path specified with -o is not a file (e.g. a directory or a device node).",
-        "output to stdout"                 : "The compiler was instructed to write its output to standard output using -o -. This is not supported by ccache.",
-        "preprocessor error"               : "Preprocessing the source code using the compiler’s -E option failed.",
-        "unsupported code directive"       : "Code like the assembler “.incbin” directive was found. This is not supported by ccache.",
-        "unsupported compiler option"      : "A compiler option not supported by ccache was found.",
-        "unsupported source language"      : "A source language e.g. specified with -x was unsupported by ccache."
-    ];
-    
     override func awakeFromNib()
     {
         if self.awake
@@ -79,21 +48,18 @@ class MainViewController: NSViewController, NSTableViewDelegate, NSTableViewData
             return
         }
         
-        self.awake                                 = true
-        self.updater                               = GitHubUpdater()
-        self.updater?.user                         = "macmade"
-        self.updater?.repository                   = "ccache-gui"
-        self.tableViewHeight                       = self.tableView?.enclosingScrollView?.constantForAttribute( .height ) ?? 0.0
-        self.statisticsController?.sortDescriptors = [ NSSortDescriptor( key: "label", ascending: true ) ]
+        self.awake               = true
+        self.updater             = GitHubUpdater()
+        self.updater?.user       = "macmade"
+        self.updater?.repository = "ccache-gui"
+        self.tableViewHeight     = self.tableView?.enclosingScrollView?.constantForAttribute( .height ) ?? 0.0
     
         self.updateStatistics()
         self.updater?.checkForUpdatesInBackground()
         
         Timer.scheduledTimer( withTimeInterval: 3600, repeats: true )
         {
-            ( timer: Timer ) -> Void in
-            
-            self.updater?.checkForUpdatesInBackground()
+            _ in self.updater?.checkForUpdatesInBackground()
         }
     }
     
@@ -105,9 +71,7 @@ class MainViewController: NSViewController, NSTableViewDelegate, NSTableViewData
         {
             self.timer = Timer.scheduledTimer( withTimeInterval: 1, repeats: true )
             {
-                ( timer: Timer ) -> Void in
-                
-                self.updateStatistics()
+                _ in self.updateStatistics()
             }
         }
     }
@@ -140,7 +104,7 @@ class MainViewController: NSViewController, NSTableViewDelegate, NSTableViewData
         
         CCache.sharedInstance.cleanup()
         {
-            ( success: Bool ) -> Void in
+            _ in
             
             self.updateStatistics()
             
@@ -154,7 +118,7 @@ class MainViewController: NSViewController, NSTableViewDelegate, NSTableViewData
         
         CCache.sharedInstance.clear()
         {
-            ( success: Bool ) -> Void in
+            _ in
             
             self.updateStatistics()
             
@@ -168,7 +132,7 @@ class MainViewController: NSViewController, NSTableViewDelegate, NSTableViewData
         
         CCache.sharedInstance.clearStatistics()
         {
-            ( success: Bool ) -> Void in
+            _ in
             
             self.updateStatistics()
             
@@ -180,34 +144,31 @@ class MainViewController: NSViewController, NSTableViewDelegate, NSTableViewData
     {
         CCache.sharedInstance.getStatistics()
         {
-            ( success: Bool, statistics: String ) -> Void in
+            success, statistics in
             
             if success == false || statistics.count == 0
             {
                 return
             }
             
-            let lines = statistics.components( separatedBy: "\n" )
-            var items = [ StatisticItem ]()
-            
-            for line in lines
+            let lines = statistics.components( separatedBy: "\n" ).filter
             {
-                let parts = line.components( separatedBy: "  " )
-                
-                if parts.count < 2
+                $0.trimmingCharacters( in: .whitespaces ).isEmpty == false
+            }
+            
+            let items: [ StatisticItem ] = lines.compactMap
+            {
+                if $0.contains( ":" ) == false
                 {
-                    continue
+                    return nil
                 }
                 
-                let item     = StatisticItem()
-                item.label   = parts.first?.trimmingCharacters( in: CharacterSet.whitespaces ).capitalized ?? ""
-                item.text    = parts.last?.trimmingCharacters(  in: CharacterSet.whitespaces )             ?? ""
-                item.tooltip = MainViewController.tooltips[ item.label.lowercased() ] ?? ""
+                let parts = $0.components( separatedBy: ":" )
+                let label = parts.first ?? ""
+                let text  = parts.count == 1 ? "" : parts.last ?? ""
+                let item  = StatisticItem( label: label, text: text, tooltip: nil )
                 
-                if item.label.count != 0 && item.text.count != 0
-                {
-                    items.append( item )
-                }
+                return item
             }
             
             if items.count > 0 && items != self.statistics
@@ -223,31 +184,25 @@ class MainViewController: NSViewController, NSTableViewDelegate, NSTableViewData
     
     @IBAction private func openManual( _ sender: Any? )
     {
-        let url = URL( string : "https://ccache.samba.org/manual.html" )
-        
-        if url != nil
+        if let url = URL( string : "https://ccache.samba.org/manual.html" )
         {
-            NSWorkspace.shared.open( url! )
+            NSWorkspace.shared.open( url )
         }
     }
     
     @IBAction private func install( _ sender: Any? )
     {
-        let url = URL( string : "https://brew.sh" )
-        
-        if url != nil
+        if let url = URL( string : "https://brew.sh" )
         {
-            NSWorkspace.shared.open( url! )
+            NSWorkspace.shared.open( url )
         }
     }
     
     @objc private dynamic var xcodeDerivedDataPath: String?
     {
-        let library = NSSearchPathForDirectoriesInDomains( .libraryDirectory, .userDomainMask, true ).first
-        
-        if library?.count != 0 && FileManager.default.fileExists( atPath: library! )
+        if let library = NSSearchPathForDirectoriesInDomains( .libraryDirectory, .userDomainMask, true ).first, FileManager.default.fileExists( atPath: library )
         {
-            var path: NSString = library! as NSString
+            var path: NSString = library as NSString
             
             path = path.appendingPathComponent( "Developer"   ) as NSString
             path = path.appendingPathComponent( "Xcode"       ) as NSString
@@ -266,20 +221,21 @@ class MainViewController: NSViewController, NSTableViewDelegate, NSTableViewData
     
     @objc private dynamic var xcodeDerivedDataURL:  URL?
     {
-        let path = self.xcodeDerivedDataPath
+        if let path = self.xcodeDerivedDataPath
+        {
+            return NSURL.fileURL( withPath: path )
+        }
         
-        return ( path != nil ) ? NSURL.fileURL( withPath: path! ) : nil
+        return nil
     }
     
     @IBAction private func clearXcodeDerivedData( _ sender: Any? )
     {
-        let path = self.xcodeDerivedDataPath
-        
-        if path == nil
+        guard let path = self.xcodeDerivedDataPath else
         {
             self.alertForMissingXcodeDerivedDataDirectory()
             
-            return;
+            return
         }
         
         self.running = true
@@ -288,18 +244,16 @@ class MainViewController: NSViewController, NSTableViewDelegate, NSTableViewData
         {
             do
             {
-                for sub in try FileManager.default.contentsOfDirectory( atPath: path! )
+                for sub in try FileManager.default.contentsOfDirectory( atPath: path )
                 {
-                    try FileManager.default.removeItem( atPath: ( path! as NSString ).appendingPathComponent( sub ) )
+                    try FileManager.default.removeItem( atPath: ( path as NSString ).appendingPathComponent( sub ) )
                 }
             }
             catch let error as NSError
             {
                 DispatchQueue.main.async
                 {
-                    let alert = NSAlert( error: error )
-                    
-                    alert.runModal()
+                    NSAlert( error: error ).runModal()
                 }
             }
             
@@ -312,9 +266,7 @@ class MainViewController: NSViewController, NSTableViewDelegate, NSTableViewData
     
     @IBAction private func revealXcodeDerivedData( _ sender: Any? )
     {
-        let path = self.xcodeDerivedDataPath
-        
-        if path == nil
+        guard let path = self.xcodeDerivedDataPath else
         {
             self.alertForMissingXcodeDerivedDataDirectory()
             
@@ -322,7 +274,7 @@ class MainViewController: NSViewController, NSTableViewDelegate, NSTableViewData
         }
         
         ( NSApp.delegate as? ApplicationDelegate )?.closePopover( sender )
-        NSWorkspace.shared.selectFile( nil, inFileViewerRootedAtPath: path! )
+        NSWorkspace.shared.selectFile( nil, inFileViewerRootedAtPath: path )
     }
     
     @IBAction private func checkForUpdates( _ sender: Any? )
@@ -346,7 +298,16 @@ class MainViewController: NSViewController, NSTableViewDelegate, NSTableViewData
     {
         if self.installed && self.statistics.count != 0
         {
-            self.tableView?.enclosingScrollView?.setConstant( ( CGFloat )( self.statistics.count ) * self.rowHeight, forAttribute: .height )
+            guard let items = self.statisticsController?.arrangedObjects as? [ StatisticItem ] else
+            {
+                return
+            }
+            
+            let headers = items.filter { $0.text.isEmpty }
+            let stats   = items.filter { $0.text.isEmpty == false }
+            let height  = CGFloat( headers.count ) * self.headerRowHeight + CGFloat( stats.count ) * self.rowHeight
+            
+            self.tableView?.enclosingScrollView?.setConstant( height, forAttribute: .height )
         }
         else
         {
@@ -358,6 +319,36 @@ class MainViewController: NSViewController, NSTableViewDelegate, NSTableViewData
     
     func tableView( _ tableView: NSTableView, heightOfRow row: Int ) -> CGFloat
     {
-        return self.rowHeight
+        guard let items = self.statisticsController?.arrangedObjects as? [ StatisticItem ] else
+        {
+            return self.rowHeight
+        }
+        
+        if row >= items.count
+        {
+            return self.rowHeight
+        }
+        
+        return items[ row ].text.isEmpty ? self.headerRowHeight : self.rowHeight
+    }
+    
+    func tableView( _ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int ) -> NSView?
+    {
+        guard let items = self.statisticsController?.arrangedObjects as? [ StatisticItem ] else
+        {
+            return nil
+        }
+        
+        if row >= items.count
+        {
+            return nil
+        }
+        
+        if items[ row ].text.isEmpty
+        {
+            return tableView.makeView( withIdentifier: NSUserInterfaceItemIdentifier( "HeaderCell" ), owner: self )
+        }
+        
+        return tableView.makeView( withIdentifier: NSUserInterfaceItemIdentifier( "DataCell" ), owner: self )
     }
 }
