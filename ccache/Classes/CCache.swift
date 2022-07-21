@@ -22,11 +22,6 @@
  * THE SOFTWARE.
  ******************************************************************************/
 
-/*!
- * @file        CCache.swift
- * @copyright   (c) 2017, Jean-David Gadina - www.xs-labs.com / www.imazing.com
- */
-
 import Foundation
 
 class CCache: NSObject
@@ -36,60 +31,56 @@ class CCache: NSObject
     
     static public let sharedInstance = CCache()
     
-    override init()
+    private override init()
     {
         super.init()
         
-        if let shell = ProcessInfo.processInfo.environment[ "SHELL" ] as String?
+        guard let shell = ProcessInfo.processInfo.environment[ "SHELL" ] as String?, shell.count > 0 else
         {
-            if( shell.count == 0 )
+            return
+        }
+        
+        let pipe            = Pipe()
+        let task            = Process()
+        task.launchPath     = shell
+        task.arguments      = [ "-l", "-c", "which ccache" ]
+        task.standardOutput = pipe;
+        
+        task.launch()
+        task.waitUntilExit()
+        
+        if task.terminationStatus == EXIT_SUCCESS
+        {
+            let data   = pipe.fileHandleForReading.readDataToEndOfFile()
+            let output = String( data: data, encoding: String.Encoding.utf8 )?.trimmingCharacters( in: CharacterSet.whitespacesAndNewlines )
+            
+            if let output = output, output.isEmpty == false && FileManager.default.fileExists( atPath: output )
             {
-                return
+                self.path      = output
+                self.installed = true
             }
-            
-            let pipe = Pipe()
-            let task = Process()
-            
-            task.launchPath     = shell
-            task.arguments      = [ "-l", "-c", "which ccache" ]
-            task.standardOutput = pipe;
-            
-            task.launch()
-            task.waitUntilExit()
-            
-            if( task.terminationStatus == EXIT_SUCCESS )
+        }
+        
+        if self.installed == false
+        {
+            if FileManager.default.fileExists( atPath: "/opt/local/bin/ccache" )
             {
-                var output = String( data: pipe.fileHandleForReading.readDataToEndOfFile(), encoding: String.Encoding.utf8 )
-                    output = output?.trimmingCharacters( in: CharacterSet.whitespacesAndNewlines )
-                
-                if( output?.count != 0 && FileManager.default.fileExists( atPath: output! ) )
-                {
-                    self.path      = output
-                    self.installed = true
-                }
+                self.path      = "/opt/local/bin/ccache"
+                self.installed = true
             }
-            
-            if self.installed == false
+            else if FileManager.default.fileExists( atPath: "/opt/homebrew/bin/ccache" )
             {
-                if FileManager.default.fileExists( atPath: "/opt/local/bin/ccache" )
-                {
-                    self.path      = "/opt/local/bin/ccache"
-                    self.installed = true
-                }
-                else if FileManager.default.fileExists( atPath: "/opt/homebrew/bin/ccache" )
-                {
-                    self.path      = "/opt/homebrew/bin/ccache"
-                    self.installed = true
-                }
+                self.path      = "/opt/homebrew/bin/ccache"
+                self.installed = true
             }
         }
     }
     
-    private func execute( arguments: [ String ], completion: @escaping ( Int32, FileHandle?, FileHandle? ) -> Void )
+    private func execute( arguments: [ String ], completion: @escaping ( ( status: Int32, output: FileHandle?, error: FileHandle? ) ) -> Void )
     {
-        if( self.installed == false )
+        if self.installed == false
         {
-            completion( EXIT_FAILURE, nil, nil )
+            completion( ( EXIT_FAILURE, nil, nil ) )
             
             return
         }
@@ -110,7 +101,7 @@ class CCache: NSObject
             
             DispatchQueue.main.async
             {
-                completion( task.terminationStatus, p1.fileHandleForReading, p2.fileHandleForReading )
+                completion( ( task.terminationStatus, p1.fileHandleForReading, p2.fileHandleForReading ) )
             }
         }
     }
@@ -119,9 +110,7 @@ class CCache: NSObject
     {
         self.execute( arguments: [ "-c" ] )
         {
-            ( status: Int32, output: FileHandle?, error: FileHandle? ) -> Void in
-            
-            completion?( status == 0 )
+            completion?( $0.status == 0 )
         }
     }
     
@@ -129,9 +118,7 @@ class CCache: NSObject
     {
         self.execute( arguments: [ "-C" ] )
         {
-            ( status: Int32, output: FileHandle?, error: FileHandle? ) -> Void in
-            
-            completion?( status == 0 )
+            completion?( $0.status == 0 )
         }
     }
     
@@ -139,9 +126,7 @@ class CCache: NSObject
     {
         self.execute( arguments: [ "-z" ] )
         {
-            ( status: Int32, output: FileHandle?, error: FileHandle? ) -> Void in
-            
-            completion?( status == 0 )
+            completion?( $0.status == 0 )
         }
     }
     
@@ -149,11 +134,9 @@ class CCache: NSObject
     {
         self.execute( arguments: [ "-s" ] )
         {
-            ( status: Int32, output: FileHandle?, error: FileHandle? ) -> Void in
-            
-            if( status == 0 )
+            if $0.status == 0
             {
-                let str = String( data: output?.readDataToEndOfFile() ?? Data(), encoding: String.Encoding.utf8 )
+                let str = String( data: $0.output?.readDataToEndOfFile() ?? Data(), encoding: String.Encoding.utf8 )
                 
                 completion?( true, str ?? "" )
             }

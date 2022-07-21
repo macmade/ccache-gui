@@ -22,13 +22,6 @@
  * THE SOFTWARE.
  ******************************************************************************/
 
-/*!
- * @header      AppInstaller.h
- * @copyright   (c) 2017, Jean-David Gadina - www.xs-labs.com / www.imazing.com
- * @discussion  Adapted from "LetsMove" by PotionFactory:
- *              https://github.com/potionfactory/LetsMove
- */
-
 @import Cocoa;
 
 NS_ASSUME_NONNULL_BEGIN

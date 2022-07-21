@@ -22,36 +22,70 @@
  * THE SOFTWARE.
  ******************************************************************************/
 
-/*!
- * @file        ApplicationDelegate.swift
- * @copyright   (c) 2017, Jean-David Gadina - www.xs-labs.com / www.imazing.com
- */
-
 import Foundation
 
 @NSApplicationMain class ApplicationDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate, NSWindowDelegate
 {
-    @objc public dynamic var startAtLogin: Bool = false
-    
     @objc private dynamic var statusItem:             NSStatusItem?
     @objc private dynamic var aboutWindowController:  AboutWindowController?
     @objc private dynamic var mainViewController:     MainViewController?
-    @objc private dynamic var popoverWindow:          NSWindow?
     @objc private dynamic var popover:                NSPopover?
     @objc private dynamic var popoverTranscientEvent: Any?
     @objc private dynamic var popoverIsOpen:          Bool = false
     @objc private dynamic var didFinishLaunching:     Bool = false
     
+    @objc public dynamic var startAtLogin: Bool = false
+    {
+        didSet
+        {
+            if self.startAtLogin
+            {
+                NSApp.enableLoginItem()
+            }
+            else
+            {
+                NSApp.disableLoginItem()
+            }
+        }
+    }
+    
+    @objc private dynamic var popoverWindow: NSWindow?
+    {
+        didSet
+        {
+            if let window = self.popoverWindow
+            {
+                self.popoverWindowVisibilityObserver = window.observe( \.isVisible )
+                {
+                    [ weak self ] _, _ in guard let self = self else { return }
+                    
+                    if window.contentView !== self.mainViewController?.view
+                    {
+                        self.popoverWindow?.contentView = self.popover?.contentViewController?.view
+                        self.popover                    = nil
+                        self.popoverIsOpen              = false
+                    }
+                }
+            }
+            else
+            {
+                self.popoverWindowVisibilityObserver = nil
+            }
+        }
+    }
+    
+    private var popoverWindowVisibilityObserver: NSKeyValueObservation?
+    
     @IBAction public func showAboutWindow( _ sender: Any? )
     {
-        if( self.aboutWindowController == nil )
+        if self.aboutWindowController == nil
         {
             self.aboutWindowController = AboutWindowController()
             
             self.aboutWindowController?.window?.layoutIfNeeded()
         }
         
-        if( self.aboutWindowController?.window?.isVisible == false )
+        if self.aboutWindowController?.window?.isVisible == false
         {
             self.aboutWindowController?.window?.center()
         }
@@ -62,19 +96,17 @@ import Foundation
     
     @IBAction public func openPopover( _ sender: Any? )
     {
-        if( self.popoverWindow != nil && self.popoverWindow?.contentView !== self.mainViewController?.view )
+        if self.popoverWindow != nil && self.popoverWindow?.contentView !== self.mainViewController?.view
         {
-            self.popoverWindow?.removeObserver( self, forKeyPath: "visible" )
-            
             self.popoverWindow = nil
         }
         
-        if( self.popoverWindow != nil )
+        if let popoverWindow = self.popoverWindow
         {
             NSApp.activate( ignoringOtherApps: true )
-            self.popoverWindow?.makeKeyAndOrderFront( sender )
+            popoverWindow.makeKeyAndOrderFront( sender )
         }
-        else if( self.popover != nil && self.popover!.isShown )
+        else if let popover = self.popover, popover.isShown
         {
             self.togglePopover( sender )
         }
@@ -82,9 +114,9 @@ import Foundation
     
     @IBAction public func closePopover( _ sender: Any? )
     {
-        if( self.popover != nil && self.popover!.isShown )
+        if let popover = self.popover, popover.isShown
         {
-            self.popover?.close()
+            popover.close()
         }
     }
     
@@ -92,25 +124,23 @@ import Foundation
     {
         let view = self.statusItem?.button
         
-        if( self.popoverWindow != nil && self.popoverWindow?.contentView !== self.mainViewController?.view )
+        if self.popoverWindow != nil && self.popoverWindow?.contentView !== self.mainViewController?.view
         {
-            self.popoverWindow?.removeObserver( self, forKeyPath: "visible" )
-            
             self.popoverWindow = nil
         }
         
-        if( self.popoverWindow != nil )
+        if let popoverWindow = self.popoverWindow
         {
             NSApp.activate( ignoringOtherApps: true )
-            self.popoverWindow?.makeKeyAndOrderFront( sender )
+            popoverWindow.makeKeyAndOrderFront( sender )
         }
-        else if( self.popover != nil && self.popover!.isShown )
+        else if let popover = self.popover, popover.isShown
         {
-            self.popover?.close()
+            popover.close()
         }
-        else if( view != nil )
+        else if view != nil
         {
-            if( self.popover == nil )
+            if self.popover == nil
             {
                 self.popover                        = NSPopover()
                 self.popover?.behavior              = .applicationDefined
@@ -118,38 +148,10 @@ import Foundation
                 self.popover?.delegate              = self
             }
             
-            if( self.statusItem != nil )
+            if self.statusItem != nil
             {
                 self.popover?.show( relativeTo: self.statusItem!.button!.frame, of: view!, preferredEdge: .minY )
             }
-        }
-    }
-    
-    override func observeValue( forKeyPath keyPath: String?, of object: Any?, change: [ NSKeyValueChangeKey : Any ]?, context: UnsafeMutableRawPointer? )
-    {
-        if( object as AnyObject? === self && keyPath == "startAtLogin" )
-        {
-            if( self.startAtLogin )
-            {
-                NSApp.enableLoginItem()
-            }
-            else
-            {
-                NSApp.disableLoginItem()
-            }
-        }
-        else if( object as AnyObject? === self.popoverWindow && keyPath == "visible" )
-        {
-            if( self.popoverWindow?.contentView !== self.mainViewController?.view )
-            {
-                self.popoverWindow?.contentView = self.popover?.contentViewController?.view
-                self.popover                    = nil
-                self.popoverIsOpen              = false
-            }
-        }
-        else
-        {
-            super.observeValue( forKeyPath: keyPath, of: object, change: change, context: context )
         }
     }
     
@@ -165,19 +167,14 @@ import Foundation
         self.statusItem?.target = self
         self.statusItem?.action = #selector( togglePopover )
         self.mainViewController = MainViewController()
-        
-        self.addObserver( self, forKeyPath: "startAtLogin", options: [], context: nil )
-        
         self.didFinishLaunching = true;
     }
     
     func applicationWillTerminate( _ notification: Notification )
     {
-        if( self.didFinishLaunching )
+        if self.didFinishLaunching
         {
             NotificationCenter.default.removeObserver( self )
-            self.removeObserver( self, forKeyPath: "startAtLogin" )
-            self.popoverWindow?.removeObserver( self, forKeyPath: "visible" )
         }
     }
     
@@ -185,12 +182,10 @@ import Foundation
     
     func windowWillClose( _ notification: Notification )
     {
-        if( self.popoverWindow != nil && notification.object as AnyObject === self.popoverWindow! )
+        if let window = self.popoverWindow, notification.object as AnyObject === window
         {
-            self.popoverWindow?.removeObserver( self, forKeyPath: "visible" )
-            
-            self.popoverWindow?.delegate = nil
-            self.popoverWindow           = nil
+            window.delegate    = nil
+            self.popoverWindow = nil
         }
     }
     
@@ -198,17 +193,17 @@ import Foundation
     
     func popoverShouldDetach( _ popover: NSPopover ) -> Bool
     {
-        return true
+        true
     }
     
     func detachableWindow( for popover: NSPopover ) -> NSWindow?
     {
-        if( popover.contentViewController == nil )
+        if popover.contentViewController == nil
         {
             return nil
         }
         
-        if( self.popoverWindow != nil )
+        if self.popoverWindow != nil
         {
             return self.popoverWindow
         }
@@ -226,8 +221,6 @@ import Foundation
         NotificationCenter.default.removeObserver( self, name: NSPopover.willCloseNotification, object: self.popover )
         
         self.popoverWindow = window
-        
-        self.popoverWindow?.addObserver( self, forKeyPath: "visible", options: [], context: nil )
         
         return window
     }
@@ -247,7 +240,7 @@ import Foundation
     
     func popoverDidClose( _ notification: Notification )
     {
-        if( self.popoverTranscientEvent != nil )
+        if self.popoverTranscientEvent != nil
         {
             NSEvent.removeMonitor( self.popoverTranscientEvent! )
         }

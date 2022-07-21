@@ -32,7 +32,7 @@ public class AboutWindowController: NSWindowController
     
     public override var windowNibName: NSNib.Name?
     {
-        return NSNib.Name( NSStringFromClass( type( of: self ) ) )
+        NSNib.Name( NSStringFromClass( type( of: self ) ) )
     }
     
     override public func windowDidLoad()

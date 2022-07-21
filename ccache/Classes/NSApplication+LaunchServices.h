@@ -22,11 +22,6 @@
  * THE SOFTWARE.
  ******************************************************************************/
 
-/*!
- * @header      NSApplication+LaunchServices.h
- * @copyright   (c) 2017, Jean-David Gadina - www.xs-labs.com / www.imazing.com
- */
-
 @import Cocoa;
 
 @interface NSApplication( LaunchServices )

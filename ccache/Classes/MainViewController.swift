@@ -22,11 +22,6 @@
  * THE SOFTWARE.
  ******************************************************************************/
 
-/*!
- * @file        MainViewController.swift
- * @copyright   (c) 2017, Jean-David Gadina - www.xs-labs.com / www.imazing.com
- */
-
 import Cocoa
 import GitHubUpdates
 
@@ -79,7 +74,7 @@ class MainViewController: NSViewController, NSTableViewDelegate, NSTableViewData
     
     override func awakeFromNib()
     {
-        if( self.awake )
+        if self.awake
         {
             return
         }
@@ -106,7 +101,7 @@ class MainViewController: NSViewController, NSTableViewDelegate, NSTableViewData
     {
         super.viewDidAppear()
         
-        if( self.timer == nil )
+        if self.timer == nil
         {
             self.timer = Timer.scheduledTimer( withTimeInterval: 1, repeats: true )
             {
@@ -130,7 +125,7 @@ class MainViewController: NSViewController, NSTableViewDelegate, NSTableViewData
     {
         if let button = sender as? NSButton
         {
-            if( button.menu == nil || NSApp.currentEvent == nil )
+            if button.menu == nil || NSApp.currentEvent == nil
             {
                 return;
             }
@@ -187,7 +182,7 @@ class MainViewController: NSViewController, NSTableViewDelegate, NSTableViewData
         {
             ( success: Bool, statistics: String ) -> Void in
             
-            if( success == false || statistics.count == 0 )
+            if success == false || statistics.count == 0
             {
                 return
             }
@@ -199,7 +194,7 @@ class MainViewController: NSViewController, NSTableViewDelegate, NSTableViewData
             {
                 let parts = line.components( separatedBy: "  " )
                 
-                if( parts.count < 2 )
+                if parts.count < 2
                 {
                     continue
                 }
@@ -209,13 +204,13 @@ class MainViewController: NSViewController, NSTableViewDelegate, NSTableViewData
                 item.text    = parts.last?.trimmingCharacters(  in: CharacterSet.whitespaces )             ?? ""
                 item.tooltip = MainViewController.tooltips[ item.label.lowercased() ] ?? ""
                 
-                if( item.label.count != 0 && item.text.count != 0 )
+                if item.label.count != 0 && item.text.count != 0
                 {
                     items.append( item )
                 }
             }
             
-            if( items.count > 0 && items != self.statistics )
+            if items.count > 0 && items != self.statistics
             {
                 self.statisticsController?.remove( contentsOf: self.statistics )
                 self.statisticsController?.add( contentsOf: items )
@@ -230,7 +225,7 @@ class MainViewController: NSViewController, NSTableViewDelegate, NSTableViewData
     {
         let url = URL( string : "https://ccache.samba.org/manual.html" )
         
-        if( url != nil )
+        if url != nil
         {
             NSWorkspace.shared.open( url! )
         }
@@ -240,7 +235,7 @@ class MainViewController: NSViewController, NSTableViewDelegate, NSTableViewData
     {
         let url = URL( string : "https://brew.sh" )
         
-        if( url != nil )
+        if url != nil
         {
             NSWorkspace.shared.open( url! )
         }
@@ -250,7 +245,7 @@ class MainViewController: NSViewController, NSTableViewDelegate, NSTableViewData
     {
         let library = NSSearchPathForDirectoriesInDomains( .libraryDirectory, .userDomainMask, true ).first
         
-        if( library?.count != 0 && FileManager.default.fileExists( atPath: library! ) )
+        if library?.count != 0 && FileManager.default.fileExists( atPath: library! )
         {
             var path: NSString = library! as NSString
             
@@ -260,7 +255,7 @@ class MainViewController: NSViewController, NSTableViewDelegate, NSTableViewData
             
             var isDir: ObjCBool = false
             
-            if( path.length != 0 && FileManager.default.fileExists( atPath: path as String, isDirectory: &isDir ) && isDir.boolValue )
+            if path.length != 0 && FileManager.default.fileExists( atPath: path as String, isDirectory: &isDir ) && isDir.boolValue
             {
                 return path as String
             }
@@ -280,7 +275,7 @@ class MainViewController: NSViewController, NSTableViewDelegate, NSTableViewData
     {
         let path = self.xcodeDerivedDataPath
         
-        if( path == nil )
+        if path == nil
         {
             self.alertForMissingXcodeDerivedDataDirectory()
             
@@ -319,7 +314,7 @@ class MainViewController: NSViewController, NSTableViewDelegate, NSTableViewData
     {
         let path = self.xcodeDerivedDataPath
         
-        if( path == nil )
+        if path == nil
         {
             self.alertForMissingXcodeDerivedDataDirectory()
             
@@ -349,7 +344,7 @@ class MainViewController: NSViewController, NSTableViewDelegate, NSTableViewData
     
     private func adjustTableViewHeight()
     {
-        if( self.installed && self.statistics.count != 0 )
+        if self.installed && self.statistics.count != 0
         {
             self.tableView?.enclosingScrollView?.setConstant( ( CGFloat )( self.statistics.count ) * self.rowHeight, forAttribute: .height )
         }

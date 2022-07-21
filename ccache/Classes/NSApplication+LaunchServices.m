@@ -22,11 +22,6 @@
  * THE SOFTWARE.
  ******************************************************************************/
 
-/*!
- * @file        NSApplication+LaunchServices.m
- * @copyright   (c) 2017, Jean-David Gadina - www.xs-labs.com / www.imazing.com
- */
-
 #import "NSApplication+LaunchServices.h"
 
 /*

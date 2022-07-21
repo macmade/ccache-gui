@@ -22,11 +22,6 @@
  * THE SOFTWARE.
  ******************************************************************************/
 
-/*!
- * @file        StatisticItem.swift
- * @copyright   (c) 2017, Jean-David Gadina - www.xs-labs.com / www.imazing.com
- */
-
 import Foundation
 
 class StatisticItem: NSObject
@@ -37,22 +32,22 @@ class StatisticItem: NSObject
     
     static public func ==( o1: StatisticItem, o2: StatisticItem ) -> Bool
     {
-        if( o1 === o2 )
+        if o1 === o2
         {
             return true
         }
         
-        if( o1.label != o2.label )
+        if o1.label != o2.label
         {
             return false
         }
         
-        if( o1.text != o2.text )
+        if o1.text != o2.text
         {
             return false
         }
         
-        if( o1.tooltip != o2.tooltip )
+        if o1.tooltip != o2.tooltip
         {
             return false
         }
@@ -62,16 +57,16 @@ class StatisticItem: NSObject
     
     override func isEqual( _ object: Any? ) -> Bool
     {
-        if let other = object as? StatisticItem
+        guard let other = object as? StatisticItem else
         {
-            return self == other
+            return false
         }
         
-        return false
+        return self == other
     }
     
     public override var description: String
     {
-        return super.description + " " + self.label + ": " + self.text 
+        "\( super.description ) \( self.label ): \( self.text )"
     }
 }

@@ -22,32 +22,22 @@
  * THE SOFTWARE.
  ******************************************************************************/
 
-/*!
- * @file        NSView+ccache.swift
- * @copyright   (c) 2017, Jean-David Gadina - www.xs-labs.com / www.imazing.com
- */
-
 import Cocoa
 
 extension NSView
 {
     public func constraintForAttribute( _ attribute: NSLayoutConstraint.Attribute ) -> NSLayoutConstraint?
     {
-        let constraints = self.constraints.filter()
-        {
-            $0.firstAttribute == attribute
-        }
-        
-        return constraints.first
+        self.constraints.filter { $0.firstAttribute == attribute }.first
     }
     
     public func constantForAttribute( _ attribute: NSLayoutConstraint.Attribute ) -> CGFloat
     {
-        return self.constraintForAttribute( attribute )?.constant ?? 0.0
+        self.constraintForAttribute( attribute )?.constant ?? 0.0
     }
     
     public func setConstant( _ constant: CGFloat, forAttribute: NSLayoutConstraint.Attribute )
     {
-        constraintForAttribute( forAttribute )?.constant = constant
+        self.constraintForAttribute( forAttribute )?.constant = constant
     }
 }

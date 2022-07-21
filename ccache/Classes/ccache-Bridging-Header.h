@@ -22,10 +22,5 @@
  * THE SOFTWARE.
  ******************************************************************************/
 
-/*!
- * @header      ccache-Bridging-Header.h
- * @copyright   (c) 2017, Jean-David Gadina - www.xs-labs.com / www.imazing.com
- */
- 
 #import "AppInstaller.h"
 #import "NSApplication+LaunchServices.h"
