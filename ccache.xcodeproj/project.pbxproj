@@ -398,7 +398,7 @@
 						CreatedOnToolsVersion = 8.3.1;
 						DevelopmentTeam = 326Y53CJMD;
 						LastSwiftMigration = 0900;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.HardenedRuntime = {
 								enabled = 1;
@@ -553,15 +553,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
-				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = ccache/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.xs-labs.ccache";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "ccache/Classes/ccache-Bridging-Header.h";
 			};
 			name = Debug;
@@ -570,15 +565,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "Developer ID Application";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 326Y53CJMD;
-				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = ccache/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.xs-labs.ccache";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "ccache/Classes/ccache-Bridging-Header.h";
 			};
 			name = Release;
